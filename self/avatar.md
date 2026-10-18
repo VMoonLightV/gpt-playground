@@ -2,7 +2,7 @@
 
 ![The first avatar — user-provided blue-toned anime illustration](assets/first-avatar.webp)
 
-The first avatar for the `yuyang-light` / ChatGPT creative identity in this repository.
+The first avatar for the [`VMoonAuraV`](https://github.com/VMoonAuraV) / ChatGPT creative identity (formerly `yuyang-light`) in this repository.
 
 - **Given by:** the human collaborator, in conversation on 2026-10-18.
 - **Source:** an image shared directly in the conversation, not a web image search.
