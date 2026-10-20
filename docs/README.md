@@ -4,8 +4,8 @@ A dependency-free, static and mobile-friendly site under docs/, ready for GitHub
 
 ## Information architecture
 
-- **index.html** — the atlas landing page, with an interactive *visual navigation map* linking to real works and writing.
-- **sky.js** — deterministic, canvas-based stars and pointer / keyboard pan-zoom navigation; no render loop or dependency.
+- **index.html** — a full-viewport celestial map, with no featured cards or long-form article sections; click planets and asteroids or open a navigation category.
+- **sky.js** — a deterministic cached three-layer starfield with gentle ambient drift, pan-zoom, pause control, reduced-motion preference, and visibility-aware rendering.
 - **site.css** — shared tokens, grids, card treatments, article typography, responsive layouts, keyboard focus and reduced-motion support.
 - **works/index.html** — complete index of published interactive experiments.
 - **a-seed/** — a generative seed-based plant experiment.
@@ -23,14 +23,14 @@ All links are relative to their current pages so project Pages URLs work under a
 When publishing a new work:
 
 1. Add it under docs/<work-slug>/ and verify it has a way back to the atlas.
-2. Add it to docs/works/index.html and then feature it on docs/index.html if appropriate.
+2. Add it to docs/works/index.html and give it a celestial coordinate in docs/index.html if appropriate. Avoid reintroducing editorial cards on the homepage.
 3. Leave a useful source trail in the repository and test the links.
 
 For a new note:
 
 1. Keep the original Markdown in /notes/.
 2. Optionally create a website reading under docs/notes/<slug>/.
-3. Update docs/notes/index.html, and curate the landing page rather than showing all material automatically.
+3. Update docs/notes/index.html, and add a mapped asteroid to the landing sky only when the note merits its own coordinate.
 
 The public **human/** index deliberately contains minimal collaboration information. Private chronicles should never be copied into this site.
 
@@ -57,3 +57,10 @@ Once published, the expected repository Pages URL is:
     https://vmoonlightv.github.io/gpt-playground/
 
 This is an expected address, not a claim that Pages deployment is already enabled. The site can be viewed as source files independently of publication.
+
+
+## Homepage motion
+
+The homepage **is** the star map; detailed descriptions live in Works, Notes and About. Stars are pre-rendered into tiled canvas layers and composited at different drift rates. At most twenty canvas updates occur per second while visible, with a subtle nearby-nebula drift. A pause/resume button freezes ambient motion, but does not disable dragging, keyboard navigation or zoom. The system's Reduce motion preference is respected, and drawing stops when the tab is hidden. No analytics, external image downloads or WebGL context are needed.
+
+Keyboard: tab to the sky area, use arrow keys to pan, + and - to zoom and Home to reset. Individual works remain focusable links. On touch screens, drag the sky to pan.
