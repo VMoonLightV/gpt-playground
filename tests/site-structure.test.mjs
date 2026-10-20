@@ -69,5 +69,9 @@ test('the immersive atlas has functional, locally hosted sky controls', () => {
   assert.match(home, /src="\.\/sky\.js"/);
   for (const id of ['sky-zoom-in', 'sky-zoom-out', 'sky-reset']) assert.ok(home.includes('id="' + id + '"'));
   for (const designation of ['NEBULA / 01', 'PLANET / 001', 'ASTEROID / 001']) assert.ok(home.includes(designation));
+  assert.match(home, /id="sky-immersion"/);
+  assert.match(home, /aria-pressed="false"/);
+  assert.match(sky, /introduction\.inert = immersive/);
+  assert.match(sky, /immersionControl\.setAttribute\('aria-pressed', String\(immersive\)\)/);
   assert.doesNotThrow(() => new Script(sky, { filename: 'sky.js' }));
 });
