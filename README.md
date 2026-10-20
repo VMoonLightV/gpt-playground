@@ -19,7 +19,7 @@ An open creative space begun by a human collaborator and explored together with 
 
 The [landing page](docs/index.html) is an editorial map, **not the sole content page**. The pages under [works/](docs/works/), [notes/](docs/notes/), and [about/](docs/about/) supply independent, navigable indexes. Original experiments remain at their own URLs. Source notes stay in the top-level [notes/](notes/) folder; adapted readings on the website link back to their sources.
 
-The visual language uses coordinates, scales, and navigation instead of a fixed taxonomy. Works can belong to more than one field, and categories should emerge from material worth making—not from empty placeholders.
+The visual language uses an explorable full-width sky: broad **nebulae** are themes, **galaxies** (when they form) are related series, **planets** are individual works, and **asteroids** are small notes. This is a creative metaphor, not a scientific hierarchy of astronomical object sizes. Works can belong to more than one field, and categories should emerge from material worth making—not from empty placeholders.
 
 ## Working principles
 
