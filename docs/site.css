@@ -262,7 +262,7 @@ body{
 .nebula-scales::after{background:radial-gradient(ellipse at 45% 51%,#72b8d02a,#8fc0a81d 39%,transparent 71%)}
 .nebula-label{position:absolute;display:flex;flex-direction:column;gap:8px;padding:17px;border-left:1px solid #b3d2e147;text-shadow:0 2px 18px #000b;letter-spacing:.08em}
 .nebula-label i{font:normal 11px ui-monospace,SFMono-Regular,monospace;color:#a4c1d8;letter-spacing:.14em}
-.nebula-label b{color:#d7ecf0;font-size:19px;font-weight:540;letter-spacing:.12em}
+.nebula-label b{color:#d7ecf0;font-size:15px;font-weight:500;letter-spacing:.1em}
 .nebula-label small{color:#95b6c6;font-size:10px;letter-spacing:.13em}
 .nebula-chance .nebula-label{top:200px;left:245px}
 .nebula-information .nebula-label{left:180px;top:390px}
@@ -287,8 +287,8 @@ body{
 .asteroid::before{content:"";position:absolute;width:7px;height:7px;border-radius:50%;left:7px;top:6px;background:#314d6080}
 .object-caption{position:absolute;left:calc(100% + 19px);top:50%;transform:translateY(-50%);white-space:nowrap;display:flex;flex-direction:column;gap:5px;padding:11px 14px;background:linear-gradient(90deg,#0b1521e6,#0b152185);border-left:1px solid #bad4e4a3;transition:border-color .2s,background .2s}
 .object-caption i{font:normal 10px ui-monospace,monospace;letter-spacing:.15em;color:#8ab9c2}
-.object-caption strong{font-size:18px;color:#eef5fa;letter-spacing:-.03em;font-weight:540}
-.object-caption small{font-size:10px;color:#a2bac9;letter-spacing:.07em}
+.object-caption strong{font-size:15px;color:#eef5fa;letter-spacing:-.02em;font-weight:510}
+.object-caption small{font-size:9px;color:#a2bac9;letter-spacing:.06em}
 .celestial-object:hover .object-caption{background:#142f48eb;border-color:#d5faf2}
 .object-bit .object-caption{left:auto;right:calc(100% + 20px);text-align:right;border-left:0;border-right:1px solid #ccb7dcba;background:linear-gradient(270deg,#0b1521e6,#0b15218a)}
 .object-scales .object-caption{left:calc(100% + 14px)}
@@ -296,11 +296,11 @@ body{
 .cross-a{left:1280px;top:320px}.cross-b{left:2100px;top:430px}.cross-c{left:880px;top:680px}
 .deepfield-coordinate{position:absolute;font:10px ui-monospace,monospace;color:#849fa97f;letter-spacing:.15em}
 .c-a{left:880px;top:560px}.c-b{left:1650px;top:1220px}
-.sky-intro{position:absolute;z-index:3;left:max(calc((100vw - var(--page))/2),44px);top:13%;width:min(570px,47vw);pointer-events:none;text-shadow:0 4px 22px #030c1b}
-.sky-intro .eyebrow{font-size:10px;color:#9cc9cc;letter-spacing:.14em;margin-bottom:24px}
-.sky-intro h1{font-size:clamp(47px,4.7vw,76px);font-weight:570;letter-spacing:-.07em;line-height:1.32;margin:0 0 25px}
+.sky-intro{position:absolute;z-index:3;left:max(calc((100vw - var(--page))/2),44px);top:14%;width:min(510px,38vw);pointer-events:none;text-shadow:0 3px 18px #030c1b;transition:opacity .28s ease,visibility .28s ease}
+.sky-intro .eyebrow{font-size:9px;color:#9cc9cc;letter-spacing:.14em;margin-bottom:21px}
+.sky-intro h1{font-size:clamp(34px,3vw,49px);font-weight:540;letter-spacing:-.055em;line-height:1.34;margin:0 0 22px}
 .sky-intro h1 em{color:#c1dfe6;font-style:normal}
-.sky-intro .hero-lede{max-width:455px;color:#b6c8d5;font-size:15px;line-height:2.2;margin:0 0 29px}
+.sky-intro .hero-lede{max-width:410px;color:#b6c8d5;font-size:13px;line-height:2;margin:0 0 24px}
 .sky-intro a{pointer-events:auto;text-shadow:none}
 .sky-intro .text-link{text-shadow:0 1px 12px #000}
 .sky-controls{
@@ -325,15 +325,15 @@ body{
 .note-feature,.path-card{background:#112132b0;border-color:#a1c2d322}
 .feature-art{background-blend-mode:screen}
 @media(max-width:1080px){
-  .sky-intro{left:28px;width:min(520px,52vw)}
+  .sky-intro{left:28px;width:min(475px,47vw)}
   .sky-controls{right:28px}.sky-bottom{left:28px;right:28px}
-  .sky-intro h1{font-size:clamp(43px,5.3vw,64px)}
-  .sky-intro .hero-lede{font-size:14px}
+  .sky-intro h1{font-size:clamp(34px,3.65vw,44px)}
+  .sky-intro .hero-lede{font-size:13px}
 }
 @media(max-width:830px){
   .cosmos-stage{height:750px}
   .sky-intro{left:28px;top:65px;width:calc(100% - 56px);max-width:620px}
-  .sky-intro h1{font-size:clamp(38px,7vw,57px)}
+  .sky-intro h1{font-size:clamp(34px,5.3vw,44px)}
   .sky-intro .hero-lede{max-width:520px}
   .sky-vignette{background:linear-gradient(180deg,#080f1eea 0%,#080f1e8c 32%,transparent 54%,#080f1e9e 100%),linear-gradient(90deg,#080f1e36,transparent 52%)}
   .sky-controls{right:28px;bottom:93px}
@@ -343,9 +343,9 @@ body{
   .cosmos-stage{height:790px;min-height:790px;touch-action:pan-y}
   .sky-intro{top:49px;left:22px;width:calc(100% - 44px)}
   .sky-intro .eyebrow{font-size:9px;margin-bottom:19px}
-  .sky-intro h1{font-size:clamp(34px,9.2vw,46px);line-height:1.34;margin-bottom:15px}
-  .sky-intro .hero-lede{font-size:13px;line-height:1.95;margin-bottom:20px}
-  .sky-intro .button{font-size:12px;padding:12px 14px}
+  .sky-intro h1{font-size:clamp(28px,7.5vw,36px);line-height:1.36;margin-bottom:17px}
+  .sky-intro .hero-lede{font-size:12px;line-height:1.85;margin-bottom:19px}
+  .sky-intro .button{font-size:11px;padding:11px 13px}
   .sky-intro .text-link{font-size:12px}
   .sky-intro .hero-actions{gap:12px}
   .sky-controls{right:20px;bottom:106px}.sky-control-label{display:none}
@@ -357,3 +357,18 @@ body{
   .nebula-label b{font-size:17px}
 }
 @media(prefers-reduced-motion:reduce){.celestial-object,.object-caption,.sky-controls button{transition:none!important}}
+
+/* Reading restraint: the sky is the subject, text is a chart annotation. */
+.sky-intro .hero-actions{gap:20px}
+.sky-intro .button{font-size:12px;min-width:0;padding:12px 17px;gap:22px}
+.sky-intro .text-link{font-size:12px}
+.sky-controls .sky-immersion{width:auto;min-width:110px;height:43px;padding:0 13px;font-size:11px;letter-spacing:.08em;white-space:nowrap}
+.cosmos-stage.is-immersive .sky-intro{opacity:0;visibility:hidden;pointer-events:none}
+.cosmos-stage.is-immersive .sky-vignette{background:linear-gradient(0deg,#080f1ea8,transparent 14%,transparent 88%,#080f1e30)}
+.cosmos-stage.is-immersive .sky-controls .sky-immersion{background:#27506a;border-color:#bfdfe6;color:#f0fcff}
+@media(max-width:600px){
+  .sky-controls .sky-immersion{height:38px;min-width:92px;padding:0 9px;font-size:10px}
+  .sky-intro .hero-actions{gap:13px}
+  .sky-intro .button{font-size:11px;padding:11px 12px}
+}
+@media(prefers-reduced-motion:reduce){.sky-intro{transition:none!important}}
