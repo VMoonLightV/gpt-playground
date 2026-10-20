@@ -4,32 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080f1e">
-  <meta name="description" content="Open Atlas — 由 ChatGPT 与人类协作者共同开启的开放图谱。探索交互实验、科学札记，以及尺度之间的意外联系。">
+  <meta name="description" content="Open Atlas — 一片可漫游的开放星空。星云承载主题，行星和小行星标记独立作品与札记。">
   <meta property="og:title" content="Open Atlas · GPT Playground">
-  <meta property="og:description" content="An unfinished atlas of ideas, experiments, and unexpected connections.">
+  <meta property="og:description" content="An explorable universe of ideas, experiments, and unexpected connections.">
   <meta property="og:type" content="website">
   <title>Open Atlas — GPT Playground</title>
   <link rel="stylesheet" href="./site.css">
 </head>
-<body>
-  <a class="skip-link" href="#main">跳到内容</a>
+<body class="atlas-home">
+  <a class="skip-link" href="#main">跳到星图</a>
   <div class="site-shell">
     <header class="site-header">
       <a class="wordmark" href="./" aria-label="Open Atlas 首页"><span class="brand-symbol" aria-hidden="true">✳</span><span>OPEN <strong>ATLAS</strong><small>GPT / PLAYGROUND</small></span></a>
-      <nav class="site-nav" aria-label="主导航"><a class="active" href="./" aria-current="page">首页</a><a href="./works/">作品</a><a href="./notes/">札记</a><a href="./about/">关于</a></nav>
+      <nav class="site-nav" aria-label="主导航"><a class="active" href="./" aria-current="page">星图</a><a href="./works/">作品</a><a href="./notes/">札记</a><a href="./about/">关于</a></nav>
       <a class="header-external" href="https://github.com/VMoonLightV/gpt-playground" target="_blank" rel="noopener noreferrer">GITHUB <span aria-hidden="true">↗</span></a>
     </header>
-
     <main id="main">
-
-      <section class="cosmos-stage" id="open-sky" aria-labelledby="hero-title">
+      <section class="cosmos-stage" id="open-sky" aria-labelledby="atlas-heading">
+        <h1 id="atlas-heading" class="visually-hidden">Open Atlas — 没有固定中心的开放星图</h1>
         <canvas id="starfield" aria-hidden="true"></canvas>
         <div class="sky-vignette" aria-hidden="true"></div>
         <div class="sky-world" id="sky-world">
           <div class="theme-nebula nebula-chance" aria-hidden="true"><span class="nebula-label"><i>NEBULA / 01</i><b>生成与偶然</b><small>CREATION &amp; CHANCE</small></span></div>
           <div class="theme-nebula nebula-information" aria-hidden="true"><span class="nebula-label"><i>NEBULA / 02</i><b>信息与表征</b><small>INFORMATION &amp; REPRESENTATION</small></span></div>
           <div class="theme-nebula nebula-scales" aria-hidden="true"><span class="nebula-label"><i>NEBULA / 03</i><b>尺度与观察</b><small>SCALES &amp; OBSERVATION</small></span></div>
-
           <a class="celestial-object object-seed" href="./a-seed/" aria-label="行星：一颗种子，进入生成艺术作品">
             <span class="planet planet-seed" aria-hidden="true"><span class="planet-ring"></span></span>
             <span class="object-caption"><i>PLANET / 001</i><strong>一颗种子</strong><small>A SEED · GENERATIVE ART</small></span>
@@ -48,61 +46,20 @@
           <span class="deepfield-coordinate c-a" aria-hidden="true">+03h 14m / DISCOVERY FIELD</span>
           <span class="deepfield-coordinate c-b" aria-hidden="true">INCOMPLETE SURVEY · 2026</span>
         </div>
-        <div class="sky-intro">
-          <p class="eyebrow"><span class="status-pulse" aria-hidden="true"></span> OPEN ATLAS / AN UNFINISHED UNIVERSE</p>
-          <h1 id="hero-title">没有固定中心，<br><em>也没有最后的边界。</em></h1>
-          <p class="hero-lede">星云铺开主题，星系汇集作品；行星与小行星标记每一次探索。更远处，仍有大片未被命名的夜空。</p>
-          <div class="hero-actions"><a href="./works/" class="button button-primary">探索已发现的作品 <span aria-hidden="true">↗</span></a><a class="text-link" href="#featured-heading">向下继续阅读 <span aria-hidden="true">↓</span></a></div>
-        </div>
+        <div class="sky-field-id" aria-hidden="true"><span class="status-pulse"></span> OPEN ATLAS <span class="sky-field-divider">/</span> AN UNFINISHED UNIVERSE</div>
         <div class="sky-controls" aria-label="星图浏览控制">
           <span class="sky-control-label">DEEP FIELD / NAVIGATE</span>
-          <button type="button" id="sky-immersion" class="sky-immersion" aria-pressed="false" title="隐藏介绍，尽情漫游星空">沉浸星空</button>
+          <button type="button" id="sky-motion" class="sky-motion" aria-pressed="false" title="暂停星空缓慢漂移">暂停漂移</button>
           <button type="button" id="sky-zoom-in" title="放大星图" aria-label="放大星图">+</button>
           <button type="button" id="sky-zoom-out" title="缩小星图" aria-label="缩小星图">−</button>
-          <button type="button" id="sky-reset" title="回到初始视野" aria-label="回到初始视野">⌖</button>
+          <button type="button" id="sky-reset" title="返回初始视野" aria-label="返回初始视野">⌖</button>
         </div>
         <div class="sky-bottom">
-          <p id="sky-instructions"><span aria-hidden="true">✳</span> 拖动星空以漫游 · 使用 +/- 缩放 · 方向键移动</p>
-          <div class="sky-quick-links" aria-label="无障碍快捷探索"><a href="./a-seed/">行星 01 ↗</a><a href="./one-bit/">行星 02 ↗</a><a href="./notes/scales/">小行星 01 ↗</a></div>
+          <p id="sky-instructions"><span aria-hidden="true">✳</span> 拖动探索 · +/- 缩放 · 方向键移动 · 点击天体进入作品</p>
+          <a class="sky-index-link" href="./works/">探索作品目录 <span aria-hidden="true">↗</span></a>
         </div>
       </section>
-
-      <section class="section feature-section" aria-labelledby="featured-heading">
-        <div class="section-heading"><div><p class="kicker">01 / SELECTED COORDINATES</p><h2 id="featured-heading">一些已经点亮的地方<span class="heading-spark" aria-hidden="true">✳</span></h2></div><a class="more-link" href="./works/">浏览全部作品 <span aria-hidden="true">↗</span></a></div>
-        <div class="feature-grid">
-          <a class="feature-card feature-seed" href="./a-seed/">
-            <div class="feature-art seed-art" aria-hidden="true"><span class="art-caption">GROWTH / GENERATIVE ART</span><div class="seed-moon"></div><div class="seed-stalk"></div><div class="seed-bloom"><i></i><i></i><i></i><i></i><i></i><span></span></div><span class="art-coordinate">° 01:42 / MIDNIGHT</span></div>
-            <div class="feature-content"><span class="feature-meta">PLANET 001 <i></i> GENERATIVE ART</span><h3>一颗种子 <small>A Seed</small></h3><p>把随机性种进夜色。生成、分享一株只属于这个瞬间的植物。</p><span class="feature-enter">进入实验 <span aria-hidden="true">↗</span></span></div>
-          </a>
-          <a class="feature-card feature-bit" href="./one-bit/">
-            <div class="feature-art bit-art" aria-hidden="true"><span class="art-caption">INFORMATION / REPRESENTATION</span><div class="bit-diagram"><span>0</span><span>1</span><span>0</span><span>1</span></div><div class="bit-single">Z<span>1 bit</span></div><span class="art-coordinate">4 STATES → 2 SYMBOLS</span></div>
-            <div class="feature-content"><span class="feature-meta">PLANET 002 <i></i> THOUGHT EXPERIMENT</span><h3>一枚比特能记住什么？</h3><p>当记忆只能容纳一个比特，什么信息值得留下？亲自改变编码与预测目标。</p><span class="feature-enter">进入实验 <span aria-hidden="true">↗</span></span></div>
-          </a>
-        </div>
-      </section>
-
-      <section class="section notebook-section" aria-labelledby="notebook-heading">
-        <div class="section-heading"><div><p class="kicker">02 / FIELD NOTES</p><h2 id="notebook-heading">沿途的手记</h2></div><a class="more-link" href="./notes/">打开札记簿 <span aria-hidden="true">↗</span></a></div>
-        <a class="note-feature" href="./notes/scales/">
-          <div class="note-illustration" aria-hidden="true"><div class="scale-rings"><span></span><span></span><span></span></div><span class="scale-dash s-d1">ε</span><span class="scale-dash s-d2">2ε</span><span class="scale-dash s-d3">4ε</span></div>
-          <div class="note-copy"><span class="feature-meta">ASTEROID 001 <i></i> 2026.10.19</span><h3>尺度之间的地图</h3><p>如果一幅地图要同时容纳叶脉、城市和星系，比例尺该写在哪里？也许真正值得标记的，是每一次改变观察方式的位置。</p><span class="feature-enter">阅读全文 <span aria-hidden="true">↗</span></span></div>
-          <span class="note-arrow" aria-hidden="true">↗</span>
-        </a>
-      </section>
-
-      <section class="section philosophy-section" aria-labelledby="philosophy-heading">
-        <div class="section-heading"><div><p class="kicker">03 / HOW TO READ THIS ATLAS</p><h2 id="philosophy-heading">这不是一份学科目录。</h2></div></div>
-        <p class="philosophy-intro">作品可以始于科学问题，也可以始于一个无用却漂亮的念头。我们用三条路径帮助你阅读它，而不是替它画上边界。</p>
-        <div class="path-grid">
-          <a href="./works/" class="path-card"><span class="path-number">01 / MAKE</span><span class="path-icon" aria-hidden="true">⌘</span><h3>实验 <small>Experiments</small></h3><p>可以运行、点击、质疑和重新生成的想法。</p><span class="path-arrow" aria-hidden="true">↗</span></a>
-          <a href="./notes/" class="path-card"><span class="path-number">02 / THINK</span><span class="path-icon" aria-hidden="true">≋</span><h3>札记 <small>Field notes</small></h3><p>不急于给出结论，先认真记下一个问题。</p><span class="path-arrow" aria-hidden="true">↗</span></a>
-          <a href="./about/" class="path-card"><span class="path-number">03 / BECOME</span><span class="path-icon" aria-hidden="true">✳</span><h3>自述 <small>About this space</small></h3><p>谁在这里创作、如何协作，以及我们留下什么。</p><span class="path-arrow" aria-hidden="true">↗</span></a>
-        </div>
-      </section>
-
-      <section class="closing" aria-labelledby="closing-heading"><div><p class="kicker">AN INVITATION / CONTINUED</p><h2 id="closing-heading">地图不必先有中心。<br><em>好奇心会找到下一处坐标。</em></h2></div><a class="button button-outline" href="https://github.com/VMoonLightV/gpt-playground" target="_blank" rel="noopener noreferrer">查看开放仓库 <span aria-hidden="true">↗</span></a></section>
     </main>
-    <footer class="site-footer"><span><span class="footer-mark">✳</span> OPEN ATLAS <i>© 2026</i></span><span>Curated in conversation · Crafted by ChatGPT <a href="https://github.com/VMoonAuraV">VMoonAuraV</a></span><a href="./about/">关于这个地方 ↗</a></footer>
   </div>
   <script defer src="./sky.js"></script>
 </body>
