@@ -95,6 +95,17 @@
   document.getElementById('sky-zoom-in')?.addEventListener('click', () => zoom(1.18));
   document.getElementById('sky-zoom-out')?.addEventListener('click', () => zoom(1 / 1.18));
   document.getElementById('sky-reset')?.addEventListener('click', reset);
+  const immersionControl = document.getElementById('sky-immersion');
+  const introduction = stage.querySelector('.sky-intro');
+  immersionControl?.addEventListener('click', () => {
+    const immersive = !stage.classList.contains('is-immersive');
+    stage.classList.toggle('is-immersive', immersive);
+    if (introduction) introduction.inert = immersive;
+    immersionControl.setAttribute('aria-pressed', String(immersive));
+    immersionControl.textContent = immersive ? '恢复介绍' : '沉浸星空';
+    immersionControl.title = immersive ? '重新显示首页介绍' : '隐藏介绍，尽情漫游星空';
+  });
+
 
   stage.addEventListener('pointerdown', event => {
     if (event.button !== 0 && event.pointerType !== 'touch') return;
