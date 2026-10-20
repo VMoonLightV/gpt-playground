@@ -5,6 +5,7 @@ A dependency-free, static and mobile-friendly site under docs/, ready for GitHub
 ## Information architecture
 
 - **index.html** — the atlas landing page, with an interactive *visual navigation map* linking to real works and writing.
+- **sky.js** — deterministic, canvas-based stars and pointer / keyboard pan-zoom navigation; no render loop or dependency.
 - **site.css** — shared tokens, grids, card treatments, article typography, responsive layouts, keyboard focus and reduced-motion support.
 - **works/index.html** — complete index of published interactive experiments.
 - **a-seed/** — a generative seed-based plant experiment.
@@ -12,6 +13,8 @@ A dependency-free, static and mobile-friendly site under docs/, ready for GitHub
 - **notes/index.html** — field-note index; editorial navigation only.
 - **notes/scales/index.html** — accessible HTML reading of the source at /notes/2026-10-19-map-of-scales.md.
 - **about/index.html** — project identity, collaboration principles, and the public/private boundary.
+
+The cosmic metaphor is intentionally hierarchical: **nebulae = broad theme regions; galaxies = series of related works once they exist; planets = independent substantive pieces; asteroids = smaller notes and experiments**. This is a visual design grammar, not a claim about astronomical size. Do not force an empty galaxy category just to fill a chart.
 
 All links are relative to their current pages so project Pages URLs work under a repository prefix; pages do not require an external API, JS framework, analytics, or third-party fonts.
 
