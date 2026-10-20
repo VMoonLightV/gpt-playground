@@ -59,3 +59,15 @@ test('homepage does not expose private chronicles or third-party trackers', () =
   assert.match(html, /href="\.\/one-bit\/"/);
   assert.match(html, /href="\.\/notes\/scales\/"/);
 });
+
+
+test('the immersive atlas has functional, locally hosted sky controls', () => {
+  const home = readFileSync(join(docs, 'index.html'), 'utf8');
+  const sky = readFileSync(join(docs, 'sky.js'), 'utf8');
+  assert.match(home, /id="sky-world"/);
+  assert.match(home, /id="starfield"/);
+  assert.match(home, /src="\.\/sky\.js"/);
+  for (const id of ['sky-zoom-in', 'sky-zoom-out', 'sky-reset']) assert.ok(home.includes('id="' + id + '"'));
+  for (const designation of ['NEBULA / 01', 'PLANET / 001', 'ASTEROID / 001']) assert.ok(home.includes(designation));
+  assert.doesNotThrow(() => new Script(sky, { filename: 'sky.js' }));
+});
