@@ -372,3 +372,85 @@ body{
   .sky-intro .button{font-size:11px;padding:11px 12px}
 }
 @media(prefers-reduced-motion:reduce){.sky-intro{transition:none!important}}
+
+
+/* Atlas 2.1: the homepage IS the universe. All editorial content is in
+   Works, Notes and About. The main canvas is edge-to-edge and never scrolls. */
+html:has(.atlas-home){height:100%;overflow:hidden}
+body.atlas-home{height:100%;min-height:0;overflow:hidden}
+.atlas-home .site-shell{width:100%;max-width:none;margin:0}
+.atlas-home .site-header{
+  position:relative;z-index:20;
+  width:min(var(--page),calc(100% - 88px));margin:0 auto;
+  background:transparent;border-bottom-color:#99b4c628;
+}
+.atlas-home .site-header .wordmark,
+.atlas-home .site-nav,.atlas-home .header-external{filter:drop-shadow(0 2px 8px #020817ac)}
+.atlas-home .cosmos-stage{
+  position:fixed;inset:0;top:0;left:0;
+  width:100vw;height:100dvh;min-height:0;max-height:none;
+  margin:0;border:0;overflow:hidden;
+  background:
+    radial-gradient(ellipse at 59% 44%,#202e4a80 0%,transparent 61%),
+    radial-gradient(ellipse at 14% 75%,#122b3fba,transparent 52%),
+    #060e1c;
+}
+.atlas-home .sky-vignette{
+  background:
+    linear-gradient(to bottom,#050c1ace 0%,#050c1a36 15%,transparent 32%,transparent 71%,#050c1a97 100%),
+    radial-gradient(ellipse at 18% 45%,#080f1e18,transparent 70%);
+}
+.atlas-home .sky-field-id{
+  position:absolute;left:max(calc((100vw - var(--page))/2),44px);
+  top:clamp(135px,20vh,220px);z-index:5;
+  display:flex;align-items:center;gap:12px;
+  font-size:10px;letter-spacing:.2em;color:#a2c9d1;font-weight:650;
+  text-shadow:0 2px 16px #030913dd;pointer-events:none;
+}
+.sky-field-divider{color:#577a93;padding:0 4px}
+.atlas-home .sky-world{z-index:1}
+.atlas-home .object-caption{
+  padding:9px 12px;
+  background:linear-gradient(90deg,#080f1d9c,#080f1d38);
+  border-left-color:#b5d0da90;
+  opacity:.92;
+}
+.atlas-home .object-bit .object-caption{
+  background:linear-gradient(270deg,#080f1d9c,#080f1d38);
+}
+.atlas-home .celestial-object:hover .object-caption,
+.atlas-home .celestial-object:focus-visible .object-caption{
+  background:#112f47ef;opacity:1;
+}
+.atlas-home .nebula-label{opacity:.83}
+.atlas-home .sky-controls{bottom:77px;z-index:10}
+.atlas-home .sky-controls button{background:#081a2db8;backdrop-filter:blur(6px)}
+.atlas-home .sky-controls .sky-motion{width:auto;min-width:96px;height:43px;padding:0 13px;font-size:11px;letter-spacing:.09em;white-space:nowrap}
+.atlas-home .sky-controls .sky-motion[aria-pressed=true]{border-color:#bedae0;background:#173a4b;color:#e8fbff}
+.atlas-home .sky-bottom{z-index:7;bottom:17px}
+.atlas-home .sky-index-link{white-space:nowrap;color:#bfdae2}
+.atlas-home .sky-index-link:hover{color:white}
+.visually-hidden{
+  position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;
+  overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;
+}
+@media(max-width:1080px){
+  .atlas-home .site-header{width:calc(100% - 56px)}
+  .atlas-home .sky-field-id{left:28px}
+}
+@media(max-width:830px){
+  .atlas-home .site-header{width:calc(100% - 56px)}
+  .atlas-home .sky-field-id{top:169px;left:28px;font-size:9px}
+  .atlas-home .sky-controls{bottom:94px}
+}
+@media(max-width:600px){
+  .atlas-home .site-header{width:calc(100% - 38px)}
+  .atlas-home .cosmos-stage{height:100dvh;min-height:0;touch-action:pan-y}
+  .atlas-home .sky-field-id{left:20px;top:160px;font-size:8px;letter-spacing:.1em;gap:8px}
+  .atlas-home .sky-controls{right:20px;bottom:107px}
+  .atlas-home .sky-controls .sky-motion{height:38px;min-width:89px;padding:0 8px;font-size:10px}
+  .atlas-home .sky-bottom{bottom:17px;left:20px;right:20px}
+  .atlas-home .sky-bottom p{font-size:9px;line-height:1.6}
+  .atlas-home .sky-index-link{font-size:10px}
+  .atlas-home .nebula-label{opacity:.65}
+}
