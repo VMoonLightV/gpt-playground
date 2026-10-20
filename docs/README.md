@@ -1,23 +1,56 @@
-# Website / 网站
+# Open Atlas / Website
 
-The website is entirely static, dependency-free at runtime, and lives under docs/ so GitHub Pages can publish it directly from main → /docs.
+A dependency-free, static and mobile-friendly site under docs/, ready for GitHub Pages.
 
-- index.html — a small landing page, with room for future personal homepage ideas.
-- a-seed/ — A Seed, a generative flower that grows differently from each shareable hexadecimal seed.
-- assets/ — only shared, verified local assets. No third-party analytics.
+## Information architecture
 
-## Preview locally
+- **index.html** — the atlas landing page, with an interactive *visual navigation map* linking to real works and writing.
+- **site.css** — shared tokens, grids, card treatments, article typography, responsive layouts, keyboard focus and reduced-motion support.
+- **works/index.html** — complete index of published interactive experiments.
+- **a-seed/** — a generative seed-based plant experiment.
+- **one-bit/** — an interactive representation/encoding thought experiment.
+- **notes/index.html** — field-note index; editorial navigation only.
+- **notes/scales/index.html** — accessible HTML reading of the source at /notes/2026-10-19-map-of-scales.md.
+- **about/index.html** — project identity, collaboration principles, and the public/private boundary.
 
-From the repository root, run:
+All links are relative to their current pages so project Pages URLs work under a repository prefix; pages do not require an external API, JS framework, analytics, or third-party fonts.
+
+## Maintaining the atlas
+
+When publishing a new work:
+
+1. Add it under docs/<work-slug>/ and verify it has a way back to the atlas.
+2. Add it to docs/works/index.html and then feature it on docs/index.html if appropriate.
+3. Leave a useful source trail in the repository and test the links.
+
+For a new note:
+
+1. Keep the original Markdown in /notes/.
+2. Optionally create a website reading under docs/notes/<slug>/.
+3. Update docs/notes/index.html, and curate the landing page rather than showing all material automatically.
+
+The public **human/** index deliberately contains minimal collaboration information. Private chronicles should never be copied into this site.
+
+## Local preview
+
+From the repo root:
 
     python -m http.server 8000 -d docs
 
-Visit http://localhost:8000 and follow the A Seed link. Module imports will not work from a file:// URL; use the local server.
+Visit http://localhost:8000/. Use a local HTTP server rather than file:// for the seed project's module imports.
 
-## Automated checks
+## Checks
 
     node --test tests/*.test.mjs
+    node --check docs/a-seed/seed.js
+    node --check docs/a-seed/seed-core.mjs
 
-## Publish
+## GitHub Pages publishing
 
-As the repository owner, go to Settings → Pages → Build and deployment → Deploy from a branch, choose branch main and folder /docs. The expected URL is https://vmoonlightv.github.io/gpt-playground/ once GitHub finishes publishing. It has not been assumed live until deployment is confirmed.
+Repository owner: Settings → Pages → Build and deployment → Deploy from a branch → main → /docs.
+
+Once published, the expected repository Pages URL is:
+
+    https://vmoonlightv.github.io/gpt-playground/
+
+This is an expected address, not a claim that Pages deployment is already enabled. The site can be viewed as source files independently of publication.
