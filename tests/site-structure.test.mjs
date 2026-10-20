@@ -61,17 +61,39 @@ test('homepage does not expose private chronicles or third-party trackers', () =
 });
 
 
-test('the immersive atlas has functional, locally hosted sky controls', () => {
+test('the atlas home is a single full-screen star map', () => {
   const home = readFileSync(join(docs, 'index.html'), 'utf8');
   const sky = readFileSync(join(docs, 'sky.js'), 'utf8');
+  assert.match(home, /<body class="atlas-home">/);
   assert.match(home, /id="sky-world"/);
   assert.match(home, /id="starfield"/);
   assert.match(home, /src="\.\/sky\.js"/);
-  for (const id of ['sky-zoom-in', 'sky-zoom-out', 'sky-reset']) assert.ok(home.includes('id="' + id + '"'));
-  for (const designation of ['NEBULA / 01', 'PLANET / 001', 'ASTEROID / 001']) assert.ok(home.includes(designation));
-  assert.match(home, /id="sky-immersion"/);
-  assert.match(home, /aria-pressed="false"/);
-  assert.match(sky, /introduction\.inert = immersive/);
-  assert.match(sky, /immersionControl\.setAttribute\('aria-pressed', String\(immersive\)\)/);
+  assert.match(home, /aria-labelledby="atlas-heading"/);
+  assert.equal((home.match(/<section\b/g) || []).length, 1, 'homepage must contain only the star map');
+  assert.doesNotMatch(home, /feature-section|notebook-section|philosophy-section|sky-intro/);
+  for (const route of ['./works/', './notes/', './about/', './a-seed/', './one-bit/', './notes/scales/']) {
+    assert.ok(home.includes('href="' + route + '"'), 'Missing home destination: ' + route);
+  }
+  for (const name of ['NEBULA / 01', 'PLANET / 001', 'ASTEROID / 001']) {
+    assert.ok(home.includes(name), 'Missing celestial type: ' + name);
+  }
+  for (const id of ['sky-zoom-in', 'sky-zoom-out', 'sky-reset', 'sky-motion']) {
+    assert.ok(home.includes('id="' + id + '"'), 'Missing navigation control: ' + id);
+  }
+  assert.match(home, /id="sky-motion"[^>]*aria-pressed="false"/);
   assert.doesNotThrow(() => new Script(sky, { filename: 'sky.js' }));
+});
+
+test('ambient star drift is opt-out, reduced-motion aware and efficient', () => {
+  const sky = readFileSync(join(docs, 'sky.js'), 'utf8');
+  assert.match(sky, /prefers-reduced-motion: reduce/);
+  assert.match(sky, /document\.hidden/);
+  assert.match(sky, /visibilitychange/);
+  assert.match(sky, /buildStarLayers/);
+  assert.match(sky, /drawImage\(/);
+  assert.match(sky, /time - lastDraw >= 50/);
+  assert.match(sky, /motionControl\.setAttribute\('aria-pressed', String\(paused\)\)/);
+  assert.match(sky, /ArrowLeft/);
+  assert.match(sky, /setPointerCapture/);
+  assert.doesNotMatch(sky, /fetch\(|XMLHttpRequest|localStorage/);
 });
