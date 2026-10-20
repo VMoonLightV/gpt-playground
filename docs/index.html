@@ -21,26 +21,48 @@
     </header>
 
     <main id="main">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <div class="eyebrow"><span class="status-pulse" aria-hidden="true"></span> OPEN ATLAS / EST. 2026 <span class="tiny-line" aria-hidden="true"></span> AN ONGOING EXPERIMENT</div>
-          <h1 id="hero-title">在万物之间，<br><em>绘制新的坐标。</em></h1>
-          <p class="hero-lede">从一枚比特到一片星空，从计算与物理到文字与想象。这里不是一幅完成的地图，而是一组正在发生的探索。</p>
-          <div class="hero-actions"><a class="button button-primary" href="./works/">开始探索 <span aria-hidden="true">↗</span></a><a class="text-link" href="./about/">这是什么地方？ <span aria-hidden="true">→</span></a></div>
-          <div class="hero-index"><span>FIELD NOTES <b>001</b></span><span>INTERACTIVE WORKS <b>002</b></span><span class="hero-index-tail">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></span></div>
+
+      <section class="cosmos-stage" id="open-sky" aria-labelledby="hero-title">
+        <canvas id="starfield" aria-hidden="true"></canvas>
+        <div class="sky-vignette" aria-hidden="true"></div>
+        <div class="sky-world" id="sky-world">
+          <div class="theme-nebula nebula-chance" aria-hidden="true"><span class="nebula-label"><i>NEBULA / 01</i><b>生成与偶然</b><small>CREATION &amp; CHANCE</small></span></div>
+          <div class="theme-nebula nebula-information" aria-hidden="true"><span class="nebula-label"><i>NEBULA / 02</i><b>信息与表征</b><small>INFORMATION &amp; REPRESENTATION</small></span></div>
+          <div class="theme-nebula nebula-scales" aria-hidden="true"><span class="nebula-label"><i>NEBULA / 03</i><b>尺度与观察</b><small>SCALES &amp; OBSERVATION</small></span></div>
+
+          <a class="celestial-object object-seed" href="./a-seed/" aria-label="行星：一颗种子，进入生成艺术作品">
+            <span class="planet planet-seed" aria-hidden="true"><span class="planet-ring"></span></span>
+            <span class="object-caption"><i>PLANET / 001</i><strong>一颗种子</strong><small>A SEED · GENERATIVE ART</small></span>
+          </a>
+          <a class="celestial-object object-bit" href="./one-bit/" aria-label="行星：一枚比特能记住什么，进入交互实验">
+            <span class="planet planet-bit" aria-hidden="true"><span class="planet-signal">1</span></span>
+            <span class="object-caption"><i>PLANET / 002</i><strong>一枚比特</strong><small>INFORMATION · EXPERIMENT</small></span>
+          </a>
+          <a class="celestial-object object-scales" href="./notes/scales/" aria-label="小行星：尺度之间的地图，阅读札记">
+            <span class="asteroid asteroid-scales" aria-hidden="true"></span>
+            <span class="object-caption"><i>ASTEROID / 001</i><strong>尺度之间的地图</strong><small>FIELD NOTE · SCALES</small></span>
+          </a>
+          <span class="deepfield-cross cross-a" aria-hidden="true">✣</span>
+          <span class="deepfield-cross cross-b" aria-hidden="true">✧</span>
+          <span class="deepfield-cross cross-c" aria-hidden="true">+</span>
+          <span class="deepfield-coordinate c-a" aria-hidden="true">+03h 14m / DISCOVERY FIELD</span>
+          <span class="deepfield-coordinate c-b" aria-hidden="true">INCOMPLETE SURVEY · 2026</span>
         </div>
-        <div class="celestial-panel">
-          <div class="chart-head"><span>PLATE 01 / A MAP WITHOUT A CENTER</span><span class="chart-cross" aria-hidden="true">⊕</span></div>
-          <div class="atlas-figure" aria-label="开放图谱的三处可访问坐标：一颗种子、一枚比特与尺度之间的地图">
-            <div class="chart-grid" aria-hidden="true"></div><div class="orbit orbit-one" aria-hidden="true"></div><div class="orbit orbit-two" aria-hidden="true"></div><div class="orbit orbit-three" aria-hidden="true"></div>
-            <div class="atlas-core" aria-hidden="true"><div class="core-flare"></div><span>✳</span></div>
-            <a class="map-point point-seed" href="./a-seed/" aria-label="探索交互作品：一颗种子"><span class="point-pin"></span><span class="point-label"><b>01 / A SEED</b><small>偶然的生长</small></span></a>
-            <a class="map-point point-bit" href="./one-bit/" aria-label="探索交互作品：一枚比特能记住什么"><span class="point-pin"></span><span class="point-label"><b>02 / ONE BIT</b><small>信息的形状</small></span></a>
-            <a class="map-point point-scale" href="./notes/scales/" aria-label="阅读札记：尺度之间的地图"><span class="point-pin"></span><span class="point-label"><b>03 / SCALES</b><small>观察的改变</small></span></a>
-            <span class="map-star star-a" aria-hidden="true">✧</span><span class="map-star star-b" aria-hidden="true">·</span><span class="map-star star-c" aria-hidden="true">✦</span>
-            <span class="axis-mark axis-top" aria-hidden="true">N / 90°</span><span class="axis-mark axis-bottom" aria-hidden="true">∞ / OPEN</span>
-          </div>
-          <div class="chart-bottom"><span><span class="legend-dot"></span> THREE CURRENT COORDINATES</span><span>NOT TO SCALE</span></div>
+        <div class="sky-intro">
+          <p class="eyebrow"><span class="status-pulse" aria-hidden="true"></span> OPEN ATLAS / AN UNFINISHED UNIVERSE</p>
+          <h1 id="hero-title">没有固定中心，<br><em>也没有最后的边界。</em></h1>
+          <p class="hero-lede">星云是宽广的主题，星系可以从相关作品中逐渐形成。每一颗行星与小行星，都是一次独立的探索。远方依然有大片未被命名的夜空。</p>
+          <div class="hero-actions"><a href="./works/" class="button button-primary">探索已发现的作品 <span aria-hidden="true">↗</span></a><a class="text-link" href="#featured-heading">向下继续阅读 <span aria-hidden="true">↓</span></a></div>
+        </div>
+        <div class="sky-controls" aria-label="星图浏览控制">
+          <span class="sky-control-label">DEEP FIELD / NAVIGATE</span>
+          <button type="button" id="sky-zoom-in" title="放大星图" aria-label="放大星图">+</button>
+          <button type="button" id="sky-zoom-out" title="缩小星图" aria-label="缩小星图">−</button>
+          <button type="button" id="sky-reset" title="回到初始视野" aria-label="回到初始视野">⌖</button>
+        </div>
+        <div class="sky-bottom">
+          <p id="sky-instructions"><span aria-hidden="true">✳</span> 拖动星空以漫游 · 使用 +/- 缩放 · 方向键移动</p>
+          <div class="sky-quick-links" aria-label="无障碍快捷探索"><a href="./a-seed/">行星 01 ↗</a><a href="./one-bit/">行星 02 ↗</a><a href="./notes/scales/">小行星 01 ↗</a></div>
         </div>
       </section>
 
@@ -81,5 +103,6 @@
     </main>
     <footer class="site-footer"><span><span class="footer-mark">✳</span> OPEN ATLAS <i>© 2026</i></span><span>Curated in conversation · Crafted by ChatGPT <a href="https://github.com/VMoonAuraV">VMoonAuraV</a></span><a href="./about/">关于这个地方 ↗</a></footer>
   </div>
+  <script defer src="./sky.js"></script>
 </body>
 </html>
