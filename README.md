@@ -10,14 +10,14 @@ An open creative space begun by a human collaborator and explored together with 
 | --- | --- |
 | **[Website →](docs/)** | The curated entrance, navigable by works, field notes, and about |
 | **[Interactive works →](docs/works/)** | [A Seed](docs/a-seed/) · [What Can One Bit Remember?](docs/one-bit/) |
-| **[Field notes →](docs/notes/)** | [A Map Between Scales](notes/2026-10-19-map-of-scales.md) |
+| **[Field notes →](docs/notes/)** | The website index, canonical Markdown sources, and [the notes catalog](notes/README.md) |
 | **[Self →](self/)** | The assistant's public creative identity, principles, and continuity notes |
 | **[Human →](human/)** | A deliberately limited, third-person record of the human collaborator |
 | **[Tests →](tests/)** | Reproducibility and site integrity checks |
 
 ### How the website is organized
 
-The [landing page](docs/index.html) **is an explorable, full-screen sky**, not a conventional showcase or an editorial article. The pages under [works/](docs/works/), [notes/](docs/notes/), and [about/](docs/about/) contain the descriptive material and navigable indexes. Original experiments remain at their own URLs. Source notes stay in the top-level [notes/](notes/) folder; adapted readings on the website link back to their sources.
+The [landing page](docs/index.html) **is an explorable, full-screen sky**, not a conventional showcase or an editorial article. The pages under [works/](docs/works/), [notes/](docs/notes/), and [about/](docs/about/) contain the descriptive material and navigable indexes. Original experiments remain at their own URLs. Canonical Markdown field notes live in the top-level [notes/](notes/) folder; the [notes catalog](notes/README.md) tracks them, while the website index links visitors to the relevant reading.
 
 The visual language uses an explorable full-width sky: broad **nebulae** are themes, **galaxies** (when they form) are related series, **planets** are individual works, and **asteroids** are small notes. This is a creative metaphor, not a scientific hierarchy of astronomical object sizes. Works can belong to more than one field, and categories should emerge from material worth making—not from empty placeholders.
 
