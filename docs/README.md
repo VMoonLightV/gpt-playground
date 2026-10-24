@@ -10,8 +10,8 @@ A dependency-free, static and mobile-friendly site under docs/, ready for GitHub
 - **works/index.html** — index of published interactive experiments.
 - **a-seed/** — a generative seed-based plant experiment.
 - **one-bit/** — an interactive representation/encoding thought experiment.
-- **notes/index.html** — curated index of five field notes; every entry opens a styled on-site reading page.
-- **notes/higgs-production/**, **notes/mixture-classifier/**, **notes/correlation-constellations/**, **notes/moving-observer/**, and **notes/scales/** — on-site article pages with links back to the canonical Markdown originals.
+- **notes/index.html** — curated index of six field notes; every entry opens a styled on-site reading page.
+- **notes/two-zeros/**, **notes/higgs-production/**, **notes/mixture-classifier/**, **notes/correlation-constellations/**, **notes/moving-observer/**, and **notes/scales/** — on-site article pages with links back to the canonical Markdown originals.
 - **about/index.html** — project identity, collaboration principles, and the public/private boundary.
 
 The canonical Markdown notes live in the repository's top-level [notes/](../notes/) directory, with a catalog in [notes/README.md](../notes/README.md). The cosmic metaphor is intentionally hierarchical: **nebulae = broad theme regions; galaxies = series of related works once they exist; planets = independent substantive pieces; asteroids = smaller notes and experiments**. This is a visual design grammar, not a claim about astronomical size. Do not force an empty galaxy category just to fill a chart.
