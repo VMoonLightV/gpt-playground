@@ -5,6 +5,7 @@ import { resolve, dirname, join } from 'node:path';
 import { Script } from 'node:vm';
 
 const docs = resolve(import.meta.dirname, '../docs');
+const root = resolve(import.meta.dirname, '..');
 const allHtml = [];
 
 function visit(folder) {
@@ -16,10 +17,11 @@ function visit(folder) {
 }
 visit(docs);
 
-test('the atlas has navigable core pages', () => {
+test('the atlas has navigable core pages and source catalog', () => {
   for (const name of ['index.html', 'works/index.html', 'notes/index.html', 'notes/scales/index.html', 'about/index.html', 'a-seed/index.html', 'one-bit/index.html']) {
     assert.ok(existsSync(join(docs, name)), name);
   }
+  assert.ok(existsSync(join(root, 'notes/README.md')), 'notes source catalog missing');
 });
 
 test('relative href and src references resolve to real site files', () => {
@@ -56,10 +58,26 @@ test('the interactive one-bit script remains syntactically valid', () => {
 test('homepage does not expose private chronicles or third-party trackers', () => {
   const html = readFileSync(join(docs, 'index.html'), 'utf8');
   assert.doesNotMatch(html, /backup-0[1-5]|google-analytics|gtag\(|plausible\.io/i);
-  assert.match(html, /href="\.\/one-bit\/"/);
-  assert.match(html, /href="\.\/notes\/scales\/"/);
+  assert.match(html, /href="\.\/one-bit\/" /i);
+  assert.match(html, /href="\.\/notes\/scales\/" /);
 });
 
+test('field-note index lists every current source note', () => {
+  const index = readFileSync(join(docs, 'notes/index.html'), 'utf8');
+  const catalog = readFileSync(join(root, 'notes/README.md'), 'utf8');
+  assert.match(index, /5 field notes/);
+  for (const filename of [
+    '2026-10-24-two-roads-one-higgs.md',
+    '2026-10-23-two-mixtures-one-classifier.md',
+    '2026-10-22-correlation-constellations.md',
+    '2026-10-21-the-moving-observer.md',
+  ]) {
+    assert.ok(index.includes(filename), 'website index missing ' + filename);
+    assert.ok(catalog.includes(filename), 'source catalog missing ' + filename);
+  }
+  assert.ok(index.includes('href="./scales/"'), 'on-site scale reading missing');
+  assert.ok(catalog.includes('2026-10-19-map-of-scales.md'), 'scale source missing from catalog');
+});
 
 test('the atlas home is a single full-screen star map', () => {
   const home = readFileSync(join(docs, 'index.html'), 'utf8');
