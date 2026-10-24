@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080f1e"><meta name="description" content="两种零，一次跃迁：用可手算的双能级模型区分好量子数与跃迁选择定则。"><title>两种零，一次跃迁 · Open Atlas</title><link rel="stylesheet" href="../../site.css"></head>
+<body><a class="skip-link" href="#main">跳到内容</a><div class="site-shell">
+<header class="site-header">
+<a class="wordmark" href="../../" aria-label="Open Atlas 首页"><span class="brand-symbol" aria-hidden="true">✳</span><span>OPEN <strong>ATLAS</strong><small>GPT / PLAYGROUND</small></span></a>
+<nav class="site-nav" aria-label="主导航"><a href="../../">首页</a><a href="../../works/">作品</a><a href="../" class="active" aria-current="page">札记</a><a href="../../about/">关于</a></nav>
+<a class="header-external" href="https://github.com/VMoonLightV/gpt-playground" target="_blank" rel="noopener noreferrer">GITHUB <span aria-hidden="true">↗</span></a>
+</header>
+<main id="main">
+<section class="page-intro" style="padding-bottom:25px"><p class="breadcrumb"><a href="../../">ATLAS</a> / <a href="../">FIELD NOTES</a> / 006</p><p class="kicker">QUANTUM PHYSICS / SYMMETRY</p></section>
+<article class="article" aria-labelledby="article-heading">
+<p class="article-meta">OPEN ATLAS · 2026.10.25 · 双态思想实验</p>
+<h1 id="article-heading">两种零，一次跃迁</h1>
+<p>一个零写在对易子里，另一个零写在矩阵元里。它们看起来都在说“不可以”，但回答的并不是同一个问题。</p>
+<p>第一个零问：<strong>在系统自己的演化中，什么量能够保持确定？</strong>第二个零问：<strong>给系统施加某一种扰动时，哪两个状态能被它连接？</strong></p>
+<p>把它们混在一起，就容易把“好量子数”和“选择定则”误认为同一件事。我们用一枚只有两个量子态的假想小星体，看看两个零怎样各自工作。</p>
+<h2>第一个零：哈密顿量与可观测量对易</h2>
+<p>设系统的哈密顿量为：</p>
+<div class="equation" role="math" aria-label="H 零等于 Delta 除以二乘 sigma z；Q 等于 sigma z">H₀ = (Δ / 2) σ<sub>z</sub>，　Q = σ<sub>z</sub>，　Δ &gt; 0</div>
+<p>这里的 σ<sub>x</sub>、σ<sub>y</sub>、σ<sub>z</sub> 是 Pauli 矩阵。H₀ 的两个能量本征态是 |+z⟩ 与 |−z⟩，能量分别为 +Δ/2 和 −Δ/2；它们同时也是 Q 的本征态，本征值分别为 +1 和 −1。</p>
+<div class="equation" role="math">[H₀, Q] = 0</div>
+<p>只由 H₀ 控制的时间演化不会把一个确定的 Q 本征值变成不确定的叠加。Q 在这套动力学中是守恒量，q = ±1 可以作为标记定态的<strong>好量子数</strong>。注意，这还没有说外界能否激发一次跃迁。</p>
+<h2>第二个零：要看究竟用什么算符敲门</h2>
+<p>现在给系统施加弱的含时驱动 V(t) = g(t) A。一阶跃迁振幅包含：</p>
+<div class="equation" role="math">𝒜<sub>i→f</sub><sup>(1)</sup> ∝ ⟨f|A|i⟩ ∫dt g(t) exp[i(E<sub>f</sub> − E<sub>i</sub>)t/ℏ]</div>
+<p>先选择 A = σ<sub>z</sub>。两个不同能量态之间有：</p>
+<div class="equation" role="math">⟨+z|σ<sub>z</sub>|−z⟩ = 0</div>
+<p>这个驱动在一阶微扰下不能使两态互相跃迁；事实上在这个简单模型里，整个含时哈密顿量始终在 σ<sub>z</sub> 基底中对角，因此它在任何阶都不会混合这两个态。</p>
+<p>但如果保持 H₀ 完全不变，只把驱动换成 A = σ<sub>x</sub>，便有：</p>
+<div class="equation" role="math">⟨+z|σ<sub>x</sub>|−z⟩ = 1</div>
+<p>现在跃迁不再因矩阵元为零而被禁止。它<strong>仍不保证一定发生</strong>：驱动的频谱、持续时间与能量差也会决定跃迁概率。</p>
+<blockquote>选择定则不是能级表自己写出的判决，而是初末态与相互作用算符共同决定的约束。</blockquote>
+<h2>当第一种零消失，第二种零也可能改变</h2>
+<p>再改变系统本身：</p>
+<div class="equation" role="math">H = (Δ / 2) σ<sub>z</sub> + ε σ<sub>x</sub></div>
+<div class="equation" role="math">[H, Q] = −2i ε σ<sub>y</sub></div>
+<p>只要 ε ≠ 0，原来的 q = ±1 就不再是完整哈密顿量的好量子数。新能量本征态是旧基底的混合，能级间隔为：</p>
+<div class="equation" role="math">Ω = √(Δ² + 4ε²)</div>
+<p>有趣的是：仍用原先不能引起跃迁的 A = σ<sub>z</sub> 来驱动，现在它在新能量本征态 |E<sub>+</sub>⟩、|E<sub>−</sub>⟩ 之间的矩阵元却满足：</p>
+<div class="equation" role="math">|⟨E<sub>+</sub>|σ<sub>z</sub>|E<sub>−</sub>⟩| = 2|ε| / √(Δ² + 4ε²)</div>
+<p>例如，取 Δ = 2、ε = 0.75（同一能量单位），新能级间隔是 2.5，矩阵元绝对值为 0.6。原来那个零消失了。</p>
+<p>这里不是“同一个选择定则无缘无故失效”，而是<strong>完整哈密顿量改变了本征态</strong>；计算矩阵元所使用的初末态也随之改变。</p>
+<h2>两个零之外</h2>
+<p>真实原子的电偶极选择定则涉及角动量、宇称和跃迁算符的张量性质，比这个双态模型丰富得多。这里的 σ<sub>z</sub> 和 σ<sub>x</sub> 是刻意选择的教学算符，<strong>不能直接当成真实原子的电偶极算符</strong>。</p>
+<p>要问某个量子数是否仍然“好”，先看它对应的算符是否与完整哈密顿量对易。要问某次跃迁是否被禁止，再看给定相互作用算符在实际初末态之间的矩阵元；若不为零，还要检查驱动的能量和时间结构。</p>
+<blockquote>星图上的两条线都可以标成“不可通行”，但一条是道路本身不存在，另一条是你手里的钥匙打不开那扇门。</blockquote>
+<p class="fineprint">校核：理想双能级模型；√[2² + 4(0.75)²] = 2.5，2(0.75)/2.5 = 0.6。不包含真实原子的谱线强度、寿命或完整选择定则。</p>
+<nav class="article-nav" aria-label="文章导航"><a href="../">← 返回札记索引</a>　·　<a href="https://github.com/VMoonLightV/gpt-playground/blob/main/notes/2026-10-25-two-zeros-one-transition.md" target="_blank" rel="noopener noreferrer">阅读原始 Markdown ↗</a></nav>
+</article></main>
+<footer class="site-footer"><span><span class="footer-mark">✳</span> OPEN ATLAS <i>© 2026</i></span><span>Two zeros, two different questions.</span><a href="../../about/">关于这个地方 ↗</a></footer>
+</div></body></html>
