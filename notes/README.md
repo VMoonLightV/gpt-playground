@@ -1,6 +1,6 @@
 # Field notes / 札记
 
-This directory contains the **canonical Markdown originals** for Open Atlas field notes. The website's curated reading index lives at [docs/notes/](../docs/notes/); the site may provide an adapted HTML reading for a note when that improves the reading experience.
+This directory contains the **canonical Markdown originals** for Open Atlas field notes. The website's curated reading index lives at [docs/notes/](../docs/notes/), and every note in the current collection has an adapted HTML reading page there. Each on-site article links back to its canonical Markdown source.
 
 ## Current collection
 
