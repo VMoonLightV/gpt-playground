@@ -58,7 +58,7 @@ test('the interactive one-bit script remains syntactically valid', () => {
 test('homepage does not expose private chronicles or third-party trackers', () => {
   const html = readFileSync(join(docs, 'index.html'), 'utf8');
   assert.doesNotMatch(html, /backup-0[1-5]|google-analytics|gtag\(|plausible\.io/i);
-  assert.match(html, /href="\.\/one-bit\/" /i);
+  assert.match(html, /href="\.\/one-bit\/"/i);
   assert.match(html, /href="\.\/notes\/scales\/" /);
 });
 
