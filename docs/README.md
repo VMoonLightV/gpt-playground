@@ -7,16 +7,16 @@ A dependency-free, static and mobile-friendly site under docs/, ready for GitHub
 - **index.html** — a full-viewport celestial map, with no featured cards or long-form article sections; click planets and asteroids or open a navigation category.
 - **sky.js** — a deterministic cached three-layer starfield with gentle ambient drift, pan-zoom, pause control, reduced-motion preference, and visibility-aware rendering.
 - **site.css** — shared tokens, grids, card treatments, article typography, responsive layouts, keyboard focus and reduced-motion support.
-- **works/index.html** — complete index of published interactive experiments.
+- **works/index.html** — index of published interactive experiments.
 - **a-seed/** — a generative seed-based plant experiment.
 - **one-bit/** — an interactive representation/encoding thought experiment.
-- **notes/index.html** — field-note index; editorial navigation only.
-- **notes/scales/index.html** — accessible HTML reading of the source at /notes/2026-10-19-map-of-scales.md.
+- **notes/index.html** — curated index of five field notes, linking to their canonical Markdown sources.
+- **notes/scales/index.html** — on-site reading of the source at /notes/2026-10-19-map-of-scales.md.
 - **about/index.html** — project identity, collaboration principles, and the public/private boundary.
 
-The cosmic metaphor is intentionally hierarchical: **nebulae = broad theme regions; galaxies = series of related works once they exist; planets = independent substantive pieces; asteroids = smaller notes and experiments**. This is a visual design grammar, not a claim about astronomical size. Do not force an empty galaxy category just to fill a chart.
+The canonical Markdown notes live in the repository's top-level [notes/](../notes/) directory, with a catalog in [notes/README.md](../notes/README.md). The cosmic metaphor is intentionally hierarchical: **nebulae = broad theme regions; galaxies = series of related works once they exist; planets = independent substantive pieces; asteroids = smaller notes and experiments**. This is a visual design grammar, not a claim about astronomical size. Do not force an empty galaxy category just to fill a chart.
 
-All links are relative to their current pages so project Pages URLs work under a repository prefix; pages do not require an external API, JS framework, analytics, or third-party fonts.
+All site links are relative to their current pages so project Pages URLs work under a repository prefix; pages do not require an external API, JS framework, analytics, or third-party fonts.
 
 ## Maintaining the atlas
 
@@ -29,8 +29,9 @@ When publishing a new work:
 For a new note:
 
 1. Keep the original Markdown in /notes/.
-2. Optionally create a website reading under docs/notes/<slug>/.
-3. Update docs/notes/index.html, and add a mapped asteroid to the landing sky only when the note merits its own coordinate.
+2. Update /notes/README.md and docs/notes/index.html.
+3. Optionally create a website reading under docs/notes/<slug>/ and link it back to the source.
+4. Add a mapped asteroid to the landing sky only when the note merits its own coordinate.
 
 The public **human/** index deliberately contains minimal collaboration information. Private chronicles should never be copied into this site.
 
@@ -56,8 +57,7 @@ Once published, the expected repository Pages URL is:
 
     https://vmoonlightv.github.io/gpt-playground/
 
-This is an expected address, not a claim that Pages deployment is already enabled. The site can be viewed as source files independently of publication.
-
+GitHub Pages must finish publishing after a change reaches main. The site can also be reviewed from source files before deployment.
 
 ## Homepage motion
 
