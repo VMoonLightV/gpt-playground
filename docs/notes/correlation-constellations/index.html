@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080f1e"><meta name="description" content="两片相关的星空：用离散例子理解 Pearson 相关系数、非线性关系与离群点。"><title>两片相关的星空 · Open Atlas</title><link rel="stylesheet" href="../../site.css"></head>
+<body><a class="skip-link" href="#main">跳到内容</a><div class="site-shell">
+<header class="site-header">
+<a class="wordmark" href="../../" aria-label="Open Atlas 首页"><span class="brand-symbol" aria-hidden="true">✳</span><span>OPEN <strong>ATLAS</strong><small>GPT / PLAYGROUND</small></span></a>
+<nav class="site-nav" aria-label="主导航"><a href="../../">首页</a><a href="../../works/">作品</a><a href="../" class="active" aria-current="page">札记</a><a href="../../about/">关于</a></nav>
+<a class="header-external" href="https://github.com/VMoonLightV/gpt-playground" target="_blank" rel="noopener noreferrer">GITHUB <span aria-hidden="true">↗</span></a>
+</header>
+<main id="main">
+<section class="page-intro" style="padding-bottom:25px"><p class="breadcrumb"><a href="../../">ATLAS</a> / <a href="../">FIELD NOTES</a> / 003</p><p class="kicker">STATISTICS / CORRELATION</p></section>
+<article class="article" aria-labelledby="article-heading">
+<p class="article-meta">OPEN ATLAS · 2026.10.22 · 一则可以手算的统计小实验</p>
+<h1 id="article-heading">两片相关的星空</h1>
+<p>有时，一幅散点图看起来像一条清楚的轨迹，Pearson 相关系数却回答：<strong>零</strong>。有时，四颗点本来彼此没有线性关联，只加入第五颗点，相关系数就接近<strong>一</strong>。</p>
+<p>这不是统计量出错了。它只是如实回答了一个比“有没有关系”更狭窄的问题：<strong>两组数值是否呈线性地一起变化？</strong></p>
+<h2>第一片：弯曲而不相关</h2>
+<p>取五个等权观测：</p>
+<table>
+<thead><tr><th>X</th><th>−2</th><th>−1</th><th>0</th><th>1</th><th>2</th></tr></thead>
+<tbody><tr><th>Y = X<sup>2</sup></th><td>4</td><td>1</td><td>0</td><td>1</td><td>4</td></tr></tbody>
+</table>
+<p>这里的关系完全确定：知道 X，就能算出 Y。但 X 的平均值是 0；每一个正的 X，都有一个负的 X 与之配对，而 Y 相同。因此：</p>
+<div class="equation" role="math">Σ (x<sub>i</sub> − x̄)(y<sub>i</sub> − ȳ) = 0　　⇒　　r = 0</div>
+<p>这不是“没有关系”，而是左右两侧的线性趋势恰好抵消。Pearson r 不是关系强度的万能温度计，它专门测量线性关联。</p>
+<h2>第二片：第五颗星</h2>
+<p>先放下四颗点：</p>
+<p><code>(−1, −1), (−1, 1), (1, −1), (1, 1)</code></p>
+<p>它们组成一个对称正方形。X、Y 的平均值都为零，协方差为零，所以 r = 0。</p>
+<p>现在在远处加上一颗点 <code>(10, 10)</code>。五个点的平均值都变成 2，且：</p>
+<div class="equation" role="math">Σ(x<sub>i</sub> − x̄)<sup>2</sup> = Σ(y<sub>i</sub> − ȳ)<sup>2</sup> = 84</div>
+<div class="equation" role="math">Σ(x<sub>i</sub> − x̄)(y<sub>i</sub> − ȳ) = 80</div>
+<p>于是：</p>
+<div class="equation" role="math">r = 80 / 84 = 20 / 21 ≈ 0.9524</div>
+<p>四颗原有的点没有移动。我们只是增加了一个极端观测，整张图的线性相关系数便从 0 跃升到约 0.95。相关系数对离群点并不稳健；报告一个漂亮的 r，不能替代检查数据的形状。</p>
+<h2>同一个数字，不同的宇宙</h2>
+<p>Pearson 相关系数的定义是：</p>
+<div class="equation" role="math">r = Σ[(x<sub>i</sub> − x̄)(y<sub>i</sub> − ȳ)] / √{Σ(x<sub>i</sub> − x̄)<sup>2</sup> · Σ(y<sub>i</sub> − ȳ)<sup>2</sup>}</div>
+<p>它对平移和正比例缩放不变，对负比例缩放只会改变符号；它没有告诉我们因果方向，也不保证散点云只包含一个群体，更无法代替对非线性结构的检查。</p>
+<p>一幅图谱当然可以为每组数据写下一个数字。但在真正理解它之前，最好先看看那些点如何排列：有没有弯曲的轨迹，有没有孤独的极端点，有没有被混在一起的不同群体。</p>
+<blockquote>一颗星的位置重要，星星之间的形状也重要。</blockquote>
+<p class="fineprint">验算说明：上述两组均为刻意构造的离散样本，等权且没有测量误差；结果是直接代入 Pearson 样本相关系数定义所得，不是模拟或经验统计。</p>
+<nav class="article-nav" aria-label="文章导航"><a href="../">← 返回札记索引</a>　·　<a href="https://github.com/VMoonLightV/gpt-playground/blob/main/notes/2026-10-22-correlation-constellations.md" target="_blank" rel="noopener noreferrer">阅读原始 Markdown ↗</a></nav>
+</article></main>
+<footer class="site-footer"><span><span class="footer-mark">✳</span> OPEN ATLAS <i>© 2026</i></span><span>Look at the points, not only the number.</span><a href="../../about/">关于这个地方 ↗</a></footer>
+</div></body></html>

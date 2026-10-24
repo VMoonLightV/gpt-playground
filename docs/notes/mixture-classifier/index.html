@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080f1e"><meta name="description" content="两杯混合物，一位分类器：从无标签混合样本理解 CWoLa 的排序性质与适用边界。"><title>两杯混合物，一位分类器 · Open Atlas</title><link rel="stylesheet" href="../../site.css"></head>
+<body><a class="skip-link" href="#main">跳到内容</a><div class="site-shell">
+<header class="site-header">
+<a class="wordmark" href="../../" aria-label="Open Atlas 首页"><span class="brand-symbol" aria-hidden="true">✳</span><span>OPEN <strong>ATLAS</strong><small>GPT / PLAYGROUND</small></span></a>
+<nav class="site-nav" aria-label="主导航"><a href="../../">首页</a><a href="../../works/">作品</a><a href="../" class="active" aria-current="page">札记</a><a href="../../about/">关于</a></nav>
+<a class="header-external" href="https://github.com/VMoonLightV/gpt-playground" target="_blank" rel="noopener noreferrer">GITHUB <span aria-hidden="true">↗</span></a>
+</header>
+<main id="main">
+<section class="page-intro" style="padding-bottom:25px"><p class="breadcrumb"><a href="../../">ATLAS</a> / <a href="../">FIELD NOTES</a> / 004</p><p class="kicker">MACHINE LEARNING / CWoLa</p></section>
+<article class="article" aria-labelledby="article-heading">
+<p class="article-meta">OPEN ATLAS · 2026.10.23 · 可手算的机器学习小实验</p>
+<h1 id="article-heading">两杯混合物，一位分类器</h1>
+<p>一位分类器被请来判断两杯饮料来自哪一杯。它不知道杯中究竟混合了什么，也没有见过两种“纯粹”的原料。奇怪的是，学会区分这两杯混合物之后，它有时也能把两种原料区分开来。</p>
+<p>这并不是魔术：两杯的<strong>混合比例不同</strong>，而同一种原料在两杯中的<strong>特征分布相同</strong>，就足够产生这种效果。</p>
+<h2>一个可以手算的例子</h2>
+<p>设有背景 B 和信号 S，观察二值特征 x ∈ {0, 1}。对信号，P(x = 1 | S) = 0.8；对背景，P(x = 1 | B) = 0.2。训练者看不到信号/背景标签，只拿到两个混合样本：A 含 10% 信号，C 含 2% 信号。</p>
+<div class="equation" role="math">P(x = 1 | A) = 0.10(0.8) + 0.90(0.2) = 0.260</div>
+<div class="equation" role="math">P(x = 1 | C) = 0.02(0.8) + 0.98(0.2) = 0.212</div>
+<p>分类器用来区分 A 与 C 的似然比为 Λ(x) = P(x | A) / P(x | C)，因此：</p>
+<div class="equation" role="math">Λ(1) = 0.260 / 0.212 ≈ 1.2264　　Λ(0) = 0.740 / 0.788 ≈ 0.9391</div>
+<p>分类器会把 x = 1 排在更像 A 的一侧，而 x = 1 也恰好更像信号。它没有获得任何逐事件信号标签，却学到了与信号背景区分一致的排序。</p>
+<h2>为什么这种排序成立</h2>
+<p>设两个样本的信号比例分别为 α &gt; β，且两样本中的信号分布 p<sub>S</sub>(x) 与背景分布 p<sub>B</sub>(x) 各自相同。则：</p>
+<div class="equation" role="math">p<sub>A</sub>(x) = α p<sub>S</sub>(x) + (1 − α) p<sub>B</sub>(x)</div>
+<div class="equation" role="math">p<sub>C</sub>(x) = β p<sub>S</sub>(x) + (1 − β) p<sub>B</sub>(x)</div>
+<p>令 t(x) = p<sub>S</sub>(x) / p<sub>B</sub>(x)（考虑 p<sub>B</sub>(x) &gt; 0 的区域），便有：</p>
+<div class="equation" role="math">p<sub>A</sub>(x) / p<sub>C</sub>(x) = [α t(x) + 1 − α] / [β t(x) + 1 − β]</div>
+<p>对 t 求导，得到：</p>
+<div class="equation" role="math">d/dt [(αt + 1 − α) / (βt + 1 − β)] = (α − β) / (βt + 1 − β)<sup>2</sup> &gt; 0</div>
+<p>因此，在这些理想前提下，<strong>最优混合样本分类器与最优信号背景分类器给出相同的排序</strong>。注意：相同的是排序，不是概率数值；混合样本分类器的输出不能直接解释为信号概率。这是 Classification Without Labels（CWoLa）的一个重要思想。</p>
+<h2>失效的裂缝</h2>
+<p>上面的推导假设背景在 A 和 C 中的特征分布完全相同。若两组分别来自质量谱的不同区域，而背景特征本身就随质量变化，那么即使没有任何信号，分类器也能分辨两组。它学到的可能只是背景的质量依赖性；之后根据分类器选择事件，还可能扭曲质量谱，使普通背景看起来像出现了局域结构。</p>
+<blockquote>会区分混合样本，并不等于发现了新粒子。</blockquote>
+<p>因此，利用 CWoLa 进行共振异常搜索，必须仔细控制特征与搜索变量的相关性，并通过独立数据与统计检验确认结果。</p>
+<h2>同一条数学线索，两种科学问题</h2>
+<p>在 <a href="https://arxiv.org/abs/1911.09107" target="_blank" rel="noopener noreferrer">OmniFold</a> 中，分类器估计密度比，用于迭代重加权，以帮助估计粒子级分布；在 <a href="https://arxiv.org/abs/1805.02664" target="_blank" rel="noopener noreferrer">CWoLa 式异常搜索</a> 中，分类器利用混合比例差异，帮助提高对未知局域信号的敏感性。前者偏向<strong>测量</strong>，后者偏向<strong>发现</strong>。</p>
+<p>开放图谱上的同一条数学公式，可以连接不同的物理问题。但公式本身并不告诉我们，观测究竟支持哪一种科学结论。那需要回到数据的来源、假设与验证。</p>
+<p class="fineprint">核算：0.260、0.212、1.2264、0.9391 已按定义验算；这是理想化的教学构造，不是真实实验结果。</p>
+<p class="fineprint">延伸阅读：Metodiev、Nachman、Thaler，<i>Classification without labels</i>；Collins、Howe、Nachman，<i>Anomaly Detection for Resonant New Physics with Machine Learning</i>。</p>
+<nav class="article-nav" aria-label="文章导航"><a href="../">← 返回札记索引</a>　·　<a href="https://github.com/VMoonLightV/gpt-playground/blob/main/notes/2026-10-23-two-mixtures-one-classifier.md" target="_blank" rel="noopener noreferrer">阅读原始 Markdown ↗</a></nav>
+</article></main>
+<footer class="site-footer"><span><span class="footer-mark">✳</span> OPEN ATLAS <i>© 2026</i></span><span>Ranking is not probability.</span><a href="../../about/">关于这个地方 ↗</a></footer>
+</div></body></html>

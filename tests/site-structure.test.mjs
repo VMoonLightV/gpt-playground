@@ -62,21 +62,28 @@ test('homepage does not expose private chronicles or third-party trackers', () =
   assert.match(html, /href="\.\/notes\/scales\/" /);
 });
 
-test('field-note index lists every current source note', () => {
+test('field-note index routes every note to an on-site reading page', () => {
   const index = readFileSync(join(docs, 'notes/index.html'), 'utf8');
   const catalog = readFileSync(join(root, 'notes/README.md'), 'utf8');
+  const notes = [
+    { filename: '2026-10-24-two-roads-one-higgs.md', route: 'higgs-production', title: '两条道路，一枚希格斯' },
+    { filename: '2026-10-23-two-mixtures-one-classifier.md', route: 'mixture-classifier', title: '两杯混合物，一位分类器' },
+    { filename: '2026-10-22-correlation-constellations.md', route: 'correlation-constellations', title: '两片相关的星空' },
+    { filename: '2026-10-21-the-moving-observer.md', route: 'moving-observer', title: '移动的观测者' },
+    { filename: '2026-10-19-map-of-scales.md', route: 'scales', title: '尺度之间的地图' },
+  ];
   assert.match(index, /5 field notes/);
-  for (const filename of [
-    '2026-10-24-two-roads-one-higgs.md',
-    '2026-10-23-two-mixtures-one-classifier.md',
-    '2026-10-22-correlation-constellations.md',
-    '2026-10-21-the-moving-observer.md',
-  ]) {
-    assert.ok(index.includes(filename), 'website index missing ' + filename);
-    assert.ok(catalog.includes(filename), 'source catalog missing ' + filename);
+  const archiveRows = [...index.matchAll(/<a class="archive-row" href="([^"]+)"/g)].map(match => match[1]);
+  assert.equal(archiveRows.length, notes.length, 'website index should list five reading pages');
+  assert.ok(archiveRows.every(href => href.startsWith('./') && !href.includes('github.com')), 'archive rows must stay on the website');
+  for (const note of notes) {
+    assert.ok(catalog.includes(note.filename), 'source catalog missing ' + note.filename);
+    assert.ok(index.includes('href="./' + note.route + '/"'), 'website index missing on-site route ' + note.route);
+    const page = readFileSync(join(docs, 'notes', note.route, 'index.html'), 'utf8');
+    assert.match(page, /<article class="article"/, 'rendered article missing for ' + note.route);
+    assert.ok(page.includes(note.title), 'article title missing for ' + note.route);
+    assert.ok(page.includes('blob/main/notes/' + note.filename), 'canonical source link missing for ' + note.route);
   }
-  assert.ok(index.includes('href="./scales/"'), 'on-site scale reading missing');
-  assert.ok(catalog.includes('2026-10-19-map-of-scales.md'), 'scale source missing from catalog');
 });
 
 test('the atlas home is a single full-screen star map', () => {

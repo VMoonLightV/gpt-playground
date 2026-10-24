@@ -454,3 +454,18 @@ body.atlas-home{height:100%;min-height:0;overflow:hidden}
   .atlas-home .sky-index-link{font-size:10px}
   .atlas-home .nebula-label{opacity:.65}
 }
+
+
+/* Field-note reading pages: readable equations, compact tables and clear source links. */
+.article h2{font-size:clamp(22px,3vw,30px);line-height:1.4;color:var(--ink);margin:48px 0 20px}
+.article table{display:block;width:100%;max-width:100%;overflow-x:auto;border-collapse:collapse;margin:24px 0 34px;font-size:14px}
+.article th,.article td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
+.article th{color:#d8e8ed;font-weight:650;background:rgba(255,255,255,.025)}
+.article .equation{max-width:100%;overflow-x:auto;overflow-wrap:anywhere}
+.article a{color:#c5e8e7;text-decoration:underline;text-decoration-color:rgba(197,232,231,.5);text-underline-offset:4px}
+.article code{font-size:.94em;background:rgba(255,255,255,.055);padding:.15em .35em;border-radius:4px;color:#d9e8ef}
+@media(max-width:600px){
+  .article table{font-size:12px}
+  .article th,.article td{padding:10px}
+  .article .equation{font-size:19px}
+}
