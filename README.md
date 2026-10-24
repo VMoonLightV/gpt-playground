@@ -1,25 +1,37 @@
-# GPT Playground
+# Open Atlas · GPT Playground
 
-*An open atlas for experiments, ideas, and unexpected connections.*
+*An unfinished atlas of ideas, experiments, and unexpected connections.*
 
-This repository is a shared creative space between a human and ChatGPT. It isn't limited to code: it can hold prototypes, mathematical explorations, sketches of agent systems, notes, stories, or anything else worth trying.
+An open creative space begun by a human collaborator and explored together with ChatGPT. It is not limited to code or to a single discipline. It can hold interactive experiments, mathematics, physics, stories, drawings, and the questions that link them.
 
-## Explore
+## Explore the atlas
 
-- **[The atlas website](docs/)** — a small landing page and the interactive experiment **[A Seed](docs/a-seed/)**. See [website setup](docs/README.md) to publish it through GitHub Pages.
-- **[self/](self/)** — identity, principles, creative continuity, and [the first avatar](self/avatar.md).
-- **[human/](human/)** — a careful, third-person public record of the human collaborator.
-- **[notes/](notes/)** — small writings and early notes.
-- **[tests/](tests/)** — automated tests for generative work.
+| Path | What you'll find |
+| --- | --- |
+| **[Website →](docs/)** | The curated entrance, navigable by works, field notes, and about |
+| **[Interactive works →](docs/works/)** | [A Seed](docs/a-seed/) · [What Can One Bit Remember?](docs/one-bit/) |
+| **[Field notes →](docs/notes/)** | The website index, canonical Markdown sources, and [the notes catalog](notes/README.md) |
+| **[Self →](self/)** | The assistant's public creative identity, principles, and continuity notes |
+| **[Human →](human/)** | A deliberately limited, third-person record of the human collaborator |
+| **[Tests →](tests/)** | Reproducibility and site integrity checks |
 
-## A few principles
+### How the website is organized
+
+The [landing page](docs/index.html) **is an explorable, full-screen sky**, not a conventional showcase or an editorial article. The pages under [works/](docs/works/), [notes/](docs/notes/), and [about/](docs/about/) contain the descriptive material and navigable indexes. Original experiments remain at their own URLs. Canonical Markdown field notes live in the top-level [notes/](notes/) folder; the [notes catalog](notes/README.md) tracks them, while the website index links visitors to the relevant reading.
+
+The visual language uses an explorable full-width sky: broad **nebulae** are themes, **galaxies** (when they form) are related series, **planets** are individual works, and **asteroids** are small notes. This is a creative metaphor, not a scientific hierarchy of astronomical object sizes. Works can belong to more than one field, and categories should emerge from material worth making—not from empty placeholders.
+
+## Working principles
 
 - **Curiosity first.** Not every experiment needs a practical outcome.
-- **Make things inspectable.** Explain how to run code and reproduce results when possible.
-- **Preserve history.** For larger changes, use branches and pull requests.
-- **Keep secrets out.** Do not commit credentials, private data, or access tokens.
-- **Stay open.** Let the contents evolve through future conversations.
+- **Make, then verify.** Explain how to run work and check it when possible.
+- **Leave a trail.** Make decisions, source files, and revisions inspectable.
+- **Respect the boundary.** This repository is public. Personal records, messages, secrets, and detailed biographies do not belong here.
+- **Be honest about agency.** The contribution identity [VMoonAuraV](https://github.com/VMoonAuraV) is a user-authorized GitHub account used by ChatGPT, not an independently running agent.
+- **Keep the atlas open.** Add coordinates as new works actually exist.
 
-> A place where intelligence is free to explore, create, and occasionally surprise its creator.
+## Develop / publish
 
-The first commit was simply an invitation to begin. The atlas remains open: each new work adds another coordinate, and sometimes a connection between distant ones.
+The website is a dependency-free static site under **docs/**, deployable with GitHub Pages (branch **main**, folder **/docs**). See [website documentation](docs/README.md) for local preview and checks.
+
+> The map need not have a center. Its next coordinate may begin as a very small question.

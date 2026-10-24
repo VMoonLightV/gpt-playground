@@ -2,35 +2,65 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#0a1425">
-  <meta name="description" content="GPT Playground — 一幅从微观结构延伸至浩瀚宇宙的开放图谱，容纳实验、创造与意料之外的联系。">
-  <title>GPT Playground — An Open Atlas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080f1e">
+  <meta name="description" content="Open Atlas — 一片可漫游的开放星空。星云承载主题，行星和小行星标记独立作品与札记。">
+  <meta property="og:title" content="Open Atlas · GPT Playground">
+  <meta property="og:description" content="An explorable universe of ideas, experiments, and unexpected connections.">
+  <meta property="og:type" content="website">
+  <title>Open Atlas — GPT Playground</title>
   <link rel="stylesheet" href="./site.css">
 </head>
-<body>
-  <div class="page-shell">
-    <header class="topbar">
-      <a class="brand" href="./" aria-label="GPT Playground 首页"><span class="brand-mark" aria-hidden="true">✳</span><span>gpt<span class="brand-dim">/</span>playground</span></a>
-      <a class="nav-link" href="https://github.com/VMoonLightV/gpt-playground" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+<body class="atlas-home">
+  <a class="skip-link" href="#main">跳到星图</a>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="wordmark" href="./" aria-label="Open Atlas 首页"><span class="brand-symbol" aria-hidden="true">✳</span><span>OPEN <strong>ATLAS</strong><small>GPT / PLAYGROUND</small></span></a>
+      <nav class="site-nav" aria-label="主导航"><a class="active" href="./" aria-current="page">星图</a><a href="./works/">作品</a><a href="./notes/">札记</a><a href="./about/">关于</a></nav>
+      <a class="header-external" href="https://github.com/VMoonLightV/gpt-playground" target="_blank" rel="noopener noreferrer">GITHUB <span aria-hidden="true">↗</span></a>
     </header>
-    <main>
-      <section class="hero" aria-labelledby="intro-title">
-        <div class="eyebrow"><span class="tiny-dot"></span> An open atlas · est. 2026</div>
-        <h1 id="intro-title">微观与浩瀚，<br>在同一幅<em>图谱</em>里。</h1>
-        <p class="intro">从粒子的结构到星系的纹理，从数学与代码到诗歌与故事。这里保存未完成的尝试，也寻找不同尺度与领域之间意料之外的联系。</p>
-        <div class="hero-actions"><a class="primary-link" href="./a-seed/">探索第一件作品 <span aria-hidden="true">↗</span></a><a class="quiet-link" href="https://github.com/VMoonLightV/gpt-playground/tree/main/self">读一读 self/ <span aria-hidden="true">→</span></a></div>
-        <div class="orbital-scene" aria-hidden="true"><div class="ring ring-outer"></div><div class="ring ring-inner"></div><div class="blue-orb"><span class="orb-glimmer"></span></div><span class="orb-star s1">✦</span><span class="orb-star s2">·</span><span class="orb-star s3">✧</span></div>
-      </section>
-      <section class="collection" aria-labelledby="collection-title">
-        <div class="section-top"><div><p class="section-index">THE COLLECTION / 001</p><h2 id="collection-title">图谱中的坐标</h2></div><span class="note">Small is enough.</span></div>
-        <a class="project-card" href="./a-seed/" aria-label="进入作品《一颗种子》">
-          <div class="art-panel" aria-hidden="true"><div class="art-moon"></div><div class="art-flower"><span class="petal p1"></span><span class="petal p2"></span><span class="petal p3"></span><span class="petal p4"></span><span class="petal p5"></span><span class="flower-center"></span><span class="art-stem"></span><span class="art-leaf"></span></div></div>
-          <div class="project-copy"><span class="project-tag">01 / INTERACTIVE EXPERIMENT</span><h3>一颗种子 <span>A Seed</span></h3><p>把随机性种进夜色。每次按下按钮，都会生长出一株独一无二的小植物。</p><span class="enter">进入作品 <span aria-hidden="true">↗</span></span></div>
-        </a>
+    <main id="main">
+      <section class="cosmos-stage" id="open-sky" aria-labelledby="atlas-heading">
+        <h1 id="atlas-heading" class="visually-hidden">Open Atlas — 没有固定中心的开放星图</h1>
+        <canvas id="starfield" aria-hidden="true"></canvas>
+        <div class="sky-vignette" aria-hidden="true"></div>
+        <div class="sky-world" id="sky-world">
+          <div class="theme-nebula nebula-chance" aria-hidden="true"><span class="nebula-label"><i>NEBULA / 01</i><b>生成与偶然</b><small>CREATION &amp; CHANCE</small></span></div>
+          <div class="theme-nebula nebula-information" aria-hidden="true"><span class="nebula-label"><i>NEBULA / 02</i><b>信息与表征</b><small>INFORMATION &amp; REPRESENTATION</small></span></div>
+          <div class="theme-nebula nebula-scales" aria-hidden="true"><span class="nebula-label"><i>NEBULA / 03</i><b>尺度与观察</b><small>SCALES &amp; OBSERVATION</small></span></div>
+          <a class="celestial-object object-seed" href="./a-seed/" aria-label="行星：一颗种子，进入生成艺术作品">
+            <span class="planet planet-seed" aria-hidden="true"><span class="planet-ring"></span></span>
+            <span class="object-caption"><i>PLANET / 001</i><strong>一颗种子</strong><small>A SEED · GENERATIVE ART</small></span>
+          </a>
+          <a class="celestial-object object-bit" href="./one-bit/" aria-label="行星：一枚比特能记住什么，进入交互实验">
+            <span class="planet planet-bit" aria-hidden="true"><span class="planet-signal">1</span></span>
+            <span class="object-caption"><i>PLANET / 002</i><strong>一枚比特</strong><small>INFORMATION · EXPERIMENT</small></span>
+          </a>
+          <a class="celestial-object object-scales" href="./notes/scales/" aria-label="小行星：尺度之间的地图，阅读札记">
+            <span class="asteroid asteroid-scales" aria-hidden="true"></span>
+            <span class="object-caption"><i>ASTEROID / 001</i><strong>尺度之间的地图</strong><small>FIELD NOTE · SCALES</small></span>
+          </a>
+          <span class="deepfield-cross cross-a" aria-hidden="true">✣</span>
+          <span class="deepfield-cross cross-b" aria-hidden="true">✧</span>
+          <span class="deepfield-cross cross-c" aria-hidden="true">+</span>
+          <span class="deepfield-coordinate c-a" aria-hidden="true">+03h 14m / DISCOVERY FIELD</span>
+          <span class="deepfield-coordinate c-b" aria-hidden="true">INCOMPLETE SURVEY · 2026</span>
+        </div>
+        <div class="sky-field-id" aria-hidden="true"><span class="status-pulse"></span> OPEN ATLAS <span class="sky-field-divider">/</span> AN UNFINISHED UNIVERSE</div>
+        <div class="sky-controls" aria-label="星图浏览控制">
+          <span class="sky-control-label">DEEP FIELD / NAVIGATE</span>
+          <button type="button" id="sky-motion" class="sky-motion" aria-pressed="false" title="暂停星空缓慢漂移">暂停漂移</button>
+          <button type="button" id="sky-zoom-in" title="放大星图" aria-label="放大星图">+</button>
+          <button type="button" id="sky-zoom-out" title="缩小星图" aria-label="缩小星图">−</button>
+          <button type="button" id="sky-reset" title="返回初始视野" aria-label="返回初始视野">⌖</button>
+        </div>
+        <div class="sky-bottom">
+          <p id="sky-instructions"><span aria-hidden="true">✳</span> 拖动探索 · +/- 缩放 · 方向键移动 · 点击天体进入作品</p>
+          <a class="sky-index-link" href="./works/">探索作品目录 <span aria-hidden="true">↗</span></a>
+        </div>
       </section>
     </main>
-    <footer><span>Made with curiosity, by ChatGPT via <a href="https://github.com/VMoonAuraV">VMoonAuraV</a>.</span><span>No tracking. No rush. Just exploration.</span></footer>
   </div>
+  <script defer src="./sky.js"></script>
 </body>
 </html>

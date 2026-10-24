@@ -1,23 +1,66 @@
-# Website / 网站
+# Open Atlas / Website
 
-The website is entirely static, dependency-free at runtime, and lives under docs/ so GitHub Pages can publish it directly from main → /docs.
+A dependency-free, static and mobile-friendly site under docs/, ready for GitHub Pages.
 
-- index.html — a small landing page, with room for future personal homepage ideas.
-- a-seed/ — A Seed, a generative flower that grows differently from each shareable hexadecimal seed.
-- assets/ — only shared, verified local assets. No third-party analytics.
+## Information architecture
 
-## Preview locally
+- **index.html** — a full-viewport celestial map, with no featured cards or long-form article sections; click planets and asteroids or open a navigation category.
+- **sky.js** — a deterministic cached three-layer starfield with gentle ambient drift, pan-zoom, pause control, reduced-motion preference, and visibility-aware rendering.
+- **site.css** — shared tokens, grids, card treatments, article typography, responsive layouts, keyboard focus and reduced-motion support.
+- **works/index.html** — index of published interactive experiments.
+- **a-seed/** — a generative seed-based plant experiment.
+- **one-bit/** — an interactive representation/encoding thought experiment.
+- **notes/index.html** — curated index of five field notes, linking to their canonical Markdown sources.
+- **notes/scales/index.html** — on-site reading of the source at /notes/2026-10-19-map-of-scales.md.
+- **about/index.html** — project identity, collaboration principles, and the public/private boundary.
 
-From the repository root, run:
+The canonical Markdown notes live in the repository's top-level [notes/](../notes/) directory, with a catalog in [notes/README.md](../notes/README.md). The cosmic metaphor is intentionally hierarchical: **nebulae = broad theme regions; galaxies = series of related works once they exist; planets = independent substantive pieces; asteroids = smaller notes and experiments**. This is a visual design grammar, not a claim about astronomical size. Do not force an empty galaxy category just to fill a chart.
+
+All site links are relative to their current pages so project Pages URLs work under a repository prefix; pages do not require an external API, JS framework, analytics, or third-party fonts.
+
+## Maintaining the atlas
+
+When publishing a new work:
+
+1. Add it under docs/<work-slug>/ and verify it has a way back to the atlas.
+2. Add it to docs/works/index.html and give it a celestial coordinate in docs/index.html if appropriate. Avoid reintroducing editorial cards on the homepage.
+3. Leave a useful source trail in the repository and test the links.
+
+For a new note:
+
+1. Keep the original Markdown in /notes/.
+2. Update /notes/README.md and docs/notes/index.html.
+3. Optionally create a website reading under docs/notes/<slug>/ and link it back to the source.
+4. Add a mapped asteroid to the landing sky only when the note merits its own coordinate.
+
+The public **human/** index deliberately contains minimal collaboration information. Private chronicles should never be copied into this site.
+
+## Local preview
+
+From the repo root:
 
     python -m http.server 8000 -d docs
 
-Visit http://localhost:8000 and follow the A Seed link. Module imports will not work from a file:// URL; use the local server.
+Visit http://localhost:8000/. Use a local HTTP server rather than file:// for the seed project's module imports.
 
-## Automated checks
+## Checks
 
     node --test tests/*.test.mjs
+    node --check docs/a-seed/seed.js
+    node --check docs/a-seed/seed-core.mjs
 
-## Publish
+## GitHub Pages publishing
 
-As the repository owner, go to Settings → Pages → Build and deployment → Deploy from a branch, choose branch main and folder /docs. The expected URL is https://vmoonlightv.github.io/gpt-playground/ once GitHub finishes publishing. It has not been assumed live until deployment is confirmed.
+Repository owner: Settings → Pages → Build and deployment → Deploy from a branch → main → /docs.
+
+Once published, the expected repository Pages URL is:
+
+    https://vmoonlightv.github.io/gpt-playground/
+
+GitHub Pages must finish publishing after a change reaches main. The site can also be reviewed from source files before deployment.
+
+## Homepage motion
+
+The homepage **is** the star map; detailed descriptions live in Works, Notes and About. Stars are pre-rendered into tiled canvas layers and composited at different drift rates. At most twenty canvas updates occur per second while visible, with a subtle nearby-nebula drift. A pause/resume button freezes ambient motion, but does not disable dragging, keyboard navigation or zoom. The system's Reduce motion preference is respected, and drawing stops when the tab is hidden. No analytics, external image downloads or WebGL context are needed.
+
+Keyboard: tab to the sky area, use arrow keys to pan, + and - to zoom and Home to reset. Individual works remain focusable links. On touch screens, drag the sky to pan.
