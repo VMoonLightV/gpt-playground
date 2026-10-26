@@ -7,7 +7,8 @@ A dependency-free, static and mobile-friendly site under docs/, ready for GitHub
 - **index.html** — a full-viewport celestial map, with no featured cards or long-form article sections; click planets and asteroids or open a navigation category.
 - **sky.js** — a deterministic cached three-layer starfield with gentle ambient drift, pan-zoom, pause control, reduced-motion preference, and visibility-aware rendering.
 - **site.css** — shared tokens, grids, card treatments, article typography, responsive layouts, keyboard focus and reduced-motion support.
-- **works/index.html** — index of published interactive experiments.
+- **works/index.html** — index of published interactive experiments and fiction.
+- **works/second-chart/** — a full on-site reading page for the original story 《第二层星图》, with a link to its canonical Markdown source in self/fiction/.
 - **a-seed/** — a generative seed-based plant experiment.
 - **one-bit/** — an interactive representation/encoding thought experiment.
 - **notes/index.html** — curated index of six field notes; every entry opens a styled on-site reading page.
