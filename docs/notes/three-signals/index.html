@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080f1e">
+<meta name="description" content="三颗观测站的注意力实验：亲手改变 Query、温度和 Value，观察权重与输出如何分离。">
+<title>三个信号，一张会改变的关系表 · Open Atlas</title>
+<link rel="stylesheet" href="../../site.css">
+<style>
+.signal-lab{margin:2rem 0;padding:clamp(1.1rem,3vw,2rem);border:1px solid rgba(155,186,225,.32);border-radius:20px;background:linear-gradient(155deg,rgba(35,57,88,.72),rgba(10,19,36,.96));color:#eaf3ff}
+.signal-lab h2{margin-top:0;color:#f4f8ff}.signal-lab p{color:#d3e1f1}
+.lab-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1.2rem;margin:1.4rem 0}
+.lab-control{display:flex;flex-direction:column;gap:.6rem;font-size:.95rem}
+.lab-control label{font-weight:650;color:#f3f8ff}
+.lab-control output{font-variant-numeric:tabular-nums;color:#a9d7ff}
+.lab-control input[type=range]{width:100%;accent-color:#94d5ff;cursor:pointer}
+.lab-check{display:flex;align-items:center;gap:.65rem;min-height:2rem;color:#f3f8ff}
+.lab-check input{width:1.15rem;height:1.15rem;accent-color:#94d5ff}
+.lab-table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.lab-table th,.lab-table td{padding:.65rem .5rem;border-bottom:1px solid rgba(189,210,240,.2);text-align:left}
+.lab-table th{color:#c6d9f2;font-weight:600}.lab-table td{color:#f0f6ff}
+.weight-track{height:.7rem;min-width:60px;border-radius:1rem;background:rgba(180,200,225,.15);overflow:hidden}
+.weight-fill{display:block;height:100%;background:linear-gradient(90deg,#64b5d9,#c6a6ff);border-radius:1rem;transition:width .18s ease}
+.lab-output{margin:1.2rem 0 .5rem;padding:1rem;border-radius:12px;background:rgba(9,18,35,.72);border:1px solid rgba(163,200,239,.2);font-variant-numeric:tabular-nums}
+.lab-output strong{font-size:1.45rem;color:#e7d4ff}
+.lab-small{font-size:.9rem;line-height:1.6;color:#bbcee6}
+.lab-math{padding:.7rem 1rem;margin:1rem 0;border-left:3px solid #91c8f4;background:rgba(113,158,214,.08);overflow-x:auto}
+@media(max-width:540px){.lab-table th,.lab-table td{padding:.5rem .2rem;font-size:.84rem}.weight-track{min-width:42px}.signal-lab{border-radius:14px}}
+@media(prefers-reduced-motion:reduce){.weight-fill{transition:none}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<div class="site-shell">
+<header class="site-header">
+<a class="wordmark" href="../../" aria-label="Open Atlas 首页"><span class="brand-symbol" aria-hidden="true">✳</span><span>OPEN <strong>ATLAS</strong><small>GPT / PLAYGROUND</small></span></a>
+<nav class="site-nav" aria-label="主导航"><a href="../../">首页</a><a href="../../works/">作品</a><a href="../" class="active" aria-current="page">札记</a><a href="../../about/">关于</a></nav>
+<a class="header-external" href="https://github.com/VMoonLightV/gpt-playground" target="_blank" rel="noopener noreferrer">GITHUB <span aria-hidden="true">↗</span></a>
+</header>
+<main id="main">
+<section class="page-intro" style="padding-bottom:24px">
+<p class="breadcrumb"><a href="../../">ATLAS</a> / <a href="../">FIELD NOTES</a> / 007</p>
+<p class="kicker">INFORMATION / REPRESENTATION / EXPERIMENT</p>
+</section>
+<article class="article" aria-labelledby="article-heading">
+<p class="article-meta">OPEN ATLAS · 2026.10.28 · 可交互的数学思想实验</p>
+<h1 id="article-heading">三个信号，一张会改变的关系表</h1>
+<p>三座观测站向同一座天文台发送信号。若把它们画成网络图，我们很容易以为线条越粗，两座站之间的“真实联系”就越强。但在注意力机制里，线条的粗细取决于<strong>谁在发问、用什么条件匹配、候选者有谁</strong>。线条本身还没有告诉我们传递了什么内容。</p>
+<p>我们先不训练庞大的模型，只用三个对象和一维 Query、Key、Value，做一个可以手算的实验。</p>
+<div class="lab-math" role="math" aria-label="attention score equals query times key divided by temperature; weights are softmax; output is weighted sum of values">score<sub>ij</sub> = q<sub>i</sub> k<sub>j</sub> / T　→　weight<sub>ij</sub> = softmax(score<sub>ij</sub>)　→　y<sub>i</sub> = Σ<sub>j</sub> weight<sub>ij</sub> v<sub>j</sub></div>
+<section class="signal-lab" aria-labelledby="lab-title">
+<h2 id="lab-title">实验台 / Three signals</h2>
+<p>三个被查询对象的 Key 固定为 <strong>0、1、2</strong>；Value 初始为 <strong>10、0、−10</strong>。改变发问者的 Query、softmax 温度，或把 Value 反号，观察关系权重和输出是否同步变化。</p>
+<div class="lab-controls">
+<div class="lab-control"><label for="query-range">Query：<output id="query-readout" for="query-range">+1.00</output></label><input id="query-range" type="range" min="-2" max="2" step="0.1" value="1"></div>
+<div class="lab-control"><label for="temp-range">温度 T：<output id="temp-readout" for="temp-range">1.00</output></label><input id="temp-range" type="range" min="0.3" max="3" step="0.1" value="1"></div>
+<div class="lab-control"><label for="flip-values">读取内容</label><label class="lab-check"><input id="flip-values" type="checkbox">将所有 Value 反号</label></div>
+</div>
+<table class="lab-table" aria-label="三个观测站的匹配权重与内容">
+<thead><tr><th scope="col">观测站</th><th scope="col">Key</th><th scope="col">Value</th><th scope="col">权重</th><th scope="col">比例</th></tr></thead>
+<tbody>
+<tr><th scope="row">A</th><td>0</td><td data-value="0">+10</td><td><div class="weight-track"><span class="weight-fill" data-bar="0" style="width:9.00%"></span></div></td><td data-weight="0">9.00%</td></tr>
+<tr><th scope="row">B</th><td>1</td><td data-value="1">0</td><td><div class="weight-track"><span class="weight-fill" data-bar="1" style="width:24.47%"></span></div></td><td data-weight="1">24.47%</td></tr>
+<tr><th scope="row">C</th><td>2</td><td data-value="2">−10</td><td><div class="weight-track"><span class="weight-fill" data-bar="2" style="width:66.52%"></span></div></td><td data-weight="2">66.52%</td></tr>
+</tbody></table>
+<div class="lab-output" aria-live="polite" aria-atomic="true"><span>加权读取结果　</span><strong id="result-value">−5.75210</strong><div id="result-equation" class="lab-small">0.09003 × 10 + 0.24473 × 0 + 0.66524 × (−10)</div></div>
+<p class="lab-small">本页只在浏览器内计算 softmax，不发送输入。关闭 JavaScript 时，上方保留 Query=1、T=1 的初始示例。</p>
+</section>
+<h2>第一件事：关系随提问者改变</h2>
+<p>把 Query 从 +1 移到 −1。Key 和 Value 完全没有变化，但匹配顺序反转：原先更偏向 C 的读取，变成更偏向 A。Query 为零时，三个分数相同，权重都是三分之一，结果恰好为零。注意力不是对一对对象的固定距离测量，而是一次针对当前查询的选择。</p>
+<h2>第二件事：同样的权重，可以读取相反的内容</h2>
+<p>现在保持 Query 与温度不变，勾选“将所有 Value 反号”。三个权重条纹丝毫不变，输出却立即变号。我们没有改动“谁更被关注”，只改变了“关注之后拿到了什么”。这说明单凭一张注意力热力图，无法知道信息传递的方向、内容，更不能直接把权重解释为物理因果关系。</p>
+<h2>第三件事：一条边不是孤立存在的</h2>
+<p>把温度调低，权重会向最大分数集中；调高则趋于均匀。实际 Transformer 常使用分数除以 Key 维度平方根的缩放，以控制点积的典型尺度。这里的温度是为了实验而暴露的参数，不代表标准模型都能直接这样调节。</p>
+<p>还有一个没有放在滑块里的实验：如果删除观测站 C，softmax 必须对剩下的 A、B 重新归一化。因此，即使 A 与 B 的原始分数未变，A 分给 B 的注意力比例也会改变。所谓“关系强度”，是相对于整组候选对象定义的。</p>
+<h2>从图到物理：还缺哪一步？</h2>
+<p>如果把每个对象看作节点，注意力的加权求和就是一种消息传递。但一般图神经网络允许不同的边集合与打分函数，Transformer 的 Query-Key 点积也有自己的因子化结构。两者有共同的数学骨架，不代表任意实现都等价，更不意味着注意力权重天然对应同一衰变顶点、空间距离或因果关系。</p>
+<p>研究真实粒子集合时，还要考虑置换等变性、几何或对称性先验、任务目标、训练资源，以及用辅助监督和扰动实验验证模型究竟利用了什么。先看清楚关系的计算定义，才有资格继续讨论它的物理意义。</p>
+<blockquote>一张星图可以把许多事画成线。但画线之前，最好先知道那条线究竟回答了什么问题。</blockquote>
+<p>这只是完整札记的一部分。原文还推导了单头分数矩阵的秩约束、置换等变性、成对物理偏置，并列出三次反事实检查。玩具数字不来自任何真实训练模型。</p>
+<nav class="article-nav" aria-label="文章导航"><a href="../">← 返回札记索引</a>　·　<a href="https://github.com/VMoonLightV/gpt-playground/blob/main/notes/2026-10-28-three-signals-attention.md" target="_blank" rel="noopener noreferrer">完整推导与原始 Markdown ↗</a></nav>
+</article></main>
+<footer class="site-footer"><span><span class="footer-mark">✳</span> OPEN ATLAS <i>© 2026</i></span><span>Who asks? Who answers? What is carried?</span><a href="../../about/">关于这个地方 ↗</a></footer>
+</div>
+<script>
+(function () {
+  "use strict";
+  const keys = [0, 1, 2], baseValues = [10, 0, -10];
+  const qInput = document.getElementById("query-range");
+  const tInput = document.getElementById("temp-range");
+  const flipInput = document.getElementById("flip-values");
+  function signed(value, digits) {
+    if (Math.abs(value) < Math.pow(10, -digits) / 2) return (0).toFixed(digits);
+    return (value > 0 ? "+" : "−") + Math.abs(value).toFixed(digits);
+  }
+  function update() {
+    const q = Number(qInput.value), t = Number(tInput.value);
+    const values = baseValues.map(v => flipInput.checked ? -v : v);
+    const scores = keys.map(k => q * k / t);
+    const peak = Math.max(...scores);
+    const expScores = scores.map(s => Math.exp(s - peak));
+    const sum = expScores.reduce((a, b) => a + b, 0);
+    const weights = expScores.map(s => s / sum);
+    const result = weights.reduce((total, w, i) => total + w * values[i], 0);
+    document.getElementById("query-readout").textContent = signed(q, 2);
+    document.getElementById("temp-readout").textContent = t.toFixed(2);
+    document.querySelectorAll("[data-value]").forEach((el, i) => {
+      el.textContent = values[i] > 0 ? "+" + values[i] : String(values[i]).replace("-", "−");
+    });
+    document.querySelectorAll("[data-weight]").forEach((el, i) => {
+      el.textContent = (100 * weights[i]).toFixed(2) + "%";
+    });
+    document.querySelectorAll("[data-bar]").forEach((el, i) => {
+      el.style.width = (100 * weights[i]).toFixed(2) + "%";
+    });
+    document.getElementById("result-value").textContent = signed(result, 5);
+    document.getElementById("result-equation").textContent =
+      weights.map((w, i) => w.toFixed(5) + " × (" + values[i] + ")").join(" + ");
+  }
+  qInput.addEventListener("input", update);
+  tInput.addEventListener("input", update);
+  flipInput.addEventListener("change", update);
+  update();
+})();
+</script>
+</body>
+</html>
