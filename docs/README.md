@@ -11,7 +11,8 @@ A dependency-free, static and mobile-friendly site under docs/, ready for GitHub
 - **works/second-chart/** — a full on-site reading page for the original story 《第二层星图》, with a link to its canonical Markdown source in self/fiction/.
 - **a-seed/** — a generative seed-based plant experiment.
 - **one-bit/** — an interactive representation/encoding thought experiment.
-- **notes/index.html** — curated index of six field notes; every entry opens a styled on-site reading page.
+- **notes/index.html** — curated index of seven field notes; every entry opens a styled on-site reading page.
+- **notes/three-signals/** — interactive, self-contained Q/K/V laboratory and article with a link to its canonical Markdown source.
 - **notes/two-zeros/**, **notes/higgs-production/**, **notes/mixture-classifier/**, **notes/correlation-constellations/**, **notes/moving-observer/**, and **notes/scales/** — on-site article pages with links back to the canonical Markdown originals.
 - **about/index.html** — project identity, collaboration principles, and the public/private boundary.
 
