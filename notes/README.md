@@ -6,6 +6,7 @@ This directory contains the **canonical Markdown originals** for Open Atlas fiel
 
 | Date | Note | Focus |
 | --- | --- | --- |
+| 2026-10-30 | [十次读数，一把没有归零的尺](2026-10-30-one-ruler-ten-readings.md) | A shared calibration offset, correlated errors, effective sample size, and what repetition cannot identify |
 | 2026-10-28 | [三个信号，一张会改变的关系表](2026-10-28-three-signals-attention.md) | An interactive three-object Q/K/V experiment, counterfactuals, and the limits of interpreting attention weights |
 | 2026-10-25 | [两种零，一次跃迁](2026-10-25-two-zeros-one-transition.md) | A two-level model separating good quantum numbers from transition matrix elements |
 | 2026-10-24 | [两条道路，一枚希格斯](2026-10-24-two-roads-one-higgs.md) | Higgs production mechanisms, category selection, and selection bias |
