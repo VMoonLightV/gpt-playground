@@ -12,7 +12,8 @@ A dependency-free, static and mobile-friendly site under docs/, ready for GitHub
 - **works/last-blue/** — a full on-site reading page for 《最后一炉蓝》, a standalone fiction story with canonical Markdown under self/fiction/.
 - **a-seed/** — a generative seed-based plant experiment.
 - **one-bit/** — an interactive representation/encoding thought experiment.
-- **notes/index.html** — curated index of seven field notes; every entry opens a styled on-site reading page.
+- **notes/index.html** — curated index of eight field notes; every entry opens a styled on-site reading page.
+- **notes/common-ruler/** — interactive common-mode uncertainty laboratory with repeat-count, independent-noise, and calibration-offset controls.
 - **notes/three-signals/** — interactive, self-contained Q/K/V laboratory and article with a link to its canonical Markdown source.
 - **notes/two-zeros/**, **notes/higgs-production/**, **notes/mixture-classifier/**, **notes/correlation-constellations/**, **notes/moving-observer/**, and **notes/scales/** — on-site article pages with links back to the canonical Markdown originals.
 - **about/index.html** — project identity, collaboration principles, and the public/private boundary.
