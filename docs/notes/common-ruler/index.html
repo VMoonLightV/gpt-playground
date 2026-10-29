@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080f1e">
+<meta name="description" content="十次读数，一把没有归零的尺：用交互图表理解共同偏移、相关误差、重复测量与校准。">
+<title>十次读数，一把没有归零的尺 · Open Atlas</title>
+<link rel="stylesheet" href="../../site.css">
+<style>
+.ruler-lab{margin:2rem 0;padding:clamp(1rem,3vw,2rem);border:1px solid rgba(150,190,225,.35);border-radius:20px;background:linear-gradient(155deg,#1b2c42,#0b1728);color:#eaf3ff}
+.ruler-lab h2{color:#f4f8ff;margin:0 0 .5rem}.ruler-lab p{color:#d1e0f1}
+.ruler-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin:1.5rem 0}
+.ruler-control label{display:block;font-size:.95rem;font-weight:650;margin-bottom:.45rem;color:#eaf4ff}
+.ruler-control input{width:100%;accent-color:#9bd9ee;cursor:pointer}
+.ruler-control output{color:#b3e5ff;font-variant-numeric:tabular-nums}
+.ruler-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:.65rem}
+.ruler-metric{padding:.8rem .9rem;background:rgba(9,19,36,.8);border:1px solid rgba(160,200,235,.18);border-radius:12px}
+.ruler-metric small{display:block;font-size:.79rem;line-height:1.5;color:#c0d3e6}
+.ruler-metric strong{display:block;font-size:1.45rem;font-variant-numeric:tabular-nums;color:#e9f6ff;margin-top:.3rem}
+.ruler-chart{margin:1.4rem 0 .6rem;padding:.7rem;border-radius:12px;background:#091527;border:1px solid rgba(160,200,235,.16)}
+.ruler-chart svg{display:block;width:100%;height:auto;max-height:370px}
+.ruler-legend{display:flex;gap:1rem;flex-wrap:wrap;font-size:.85rem;color:#d9e5f3}
+.ruler-legend span::before{content:"";display:inline-block;width:1.3rem;height:3px;vertical-align:middle;margin-right:.4rem;background:var(--swatch)}
+.ruler-note{font-size:.87rem;color:#bdcee2!important;line-height:1.8}
+.ruler-formula{padding:1rem;margin:1.2rem 0;border-left:3px solid #9dd8ee;background:rgba(130,170,215,.08);overflow-x:auto;font-variant-numeric:tabular-nums}
+.ruler-summary{padding:.8rem 1rem;border-radius:10px;background:rgba(140,184,218,.09);font-size:.92rem;color:#e5f2ff}
+@media(max-width:560px){.ruler-metric strong{font-size:1.25rem}.ruler-lab{border-radius:14px}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<div class="site-shell">
+<header class="site-header">
+<a class="wordmark" href="../../" aria-label="Open Atlas 首页"><span class="brand-symbol" aria-hidden="true">✳</span><span>OPEN <strong>ATLAS</strong><small>GPT / PLAYGROUND</small></span></a>
+<nav class="site-nav" aria-label="主导航"><a href="../../">首页</a><a href="../../works/">作品</a><a href="../" class="active" aria-current="page">札记</a><a href="../../about/">关于</a></nav>
+<a class="header-external" href="https://github.com/VMoonLightV/gpt-playground" rel="noopener noreferrer">GITHUB <span aria-hidden="true">↗</span></a>
+</header>
+<main id="main">
+<section class="page-intro" style="padding-bottom:24px">
+<p class="breadcrumb"><a href="../../">ATLAS</a> / <a href="../">FIELD NOTES</a> / 008</p>
+<p class="kicker">MEASUREMENT / CORRELATION / EXPERIMENT</p>
+</section>
+<article class="article" aria-labelledby="article-heading">
+<p class="article-meta">OPEN ATLAS · 2026.10.30 · 可交互的统计思想实验</p>
+<h1 id="article-heading">十次读数，一把没有归零的尺</h1>
+<p>一根金属杆，一把尺子，许多次彼此接近的读数。增加测量次数，平均值会越来越稳定。但如果这把尺子的零点从一开始就偏了，<strong>我们究竟变得更准确，还是只是更确信一个偏移后的答案？</strong></p>
+<p>先把每个读数分成三部分：真实长度 θ、整批测量共享的零点偏移 B、以及每次独立变化的读数噪声 ε。下面的图表不模拟某一组偶然的读数，而是计算这两种误差假设下平均值的理论标准不确定度。</p>
+<div class="ruler-formula" role="math" aria-label="X sub i equals theta plus B plus epsilon sub i; variance of the sample mean is tau squared plus sigma squared divided by n">
+X<sub>i</sub> = θ + B + ε<sub>i</sub>　　u<sub>shared</sub>(n) = √(τ² + σ²/n)
+</div>
+<section class="ruler-lab" aria-labelledby="lab-title">
+<h2 id="lab-title">实验台 / One ruler, many readings</h2>
+<p>把读数次数从 1 增加到 100，或者改变独立噪声 σ 与共同偏移尺度 τ。注意三条曲线如何分开，又在什么情况下重合。</p>
+<div class="ruler-controls">
+<div class="ruler-control"><label for="n-range">读数次数 n：<output id="n-out" for="n-range">25</output></label><input id="n-range" type="range" min="1" max="100" step="1" value="25"></div>
+<div class="ruler-control"><label for="sigma-range">独立噪声 σ：<output id="sigma-out" for="sigma-range">2.00</output></label><input id="sigma-range" type="range" min="0.5" max="5" step="0.25" value="2"></div>
+<div class="ruler-control"><label for="tau-range">共同偏移尺度 τ：<output id="tau-out" for="tau-range">1.00</output></label><input id="tau-range" type="range" min="0" max="4" step="0.25" value="1"></div>
+</div>
+<div class="ruler-metrics" aria-label="理论标准不确定度比较">
+<div class="ruler-metric"><small>共享偏移：实际模型</small><strong id="shared-val">1.077</strong></div>
+<div class="ruler-metric"><small>误当独立：天真模型</small><strong id="ind-val">0.447</strong></div>
+<div class="ruler-metric"><small>参考校准：示例模型</small><strong id="cal-val">0.640</strong></div>
+</div>
+<div class="ruler-chart">
+<svg id="uncertainty-chart" viewBox="0 0 720 340" role="img" aria-labelledby="chart-title chart-desc">
+<title id="chart-title">测量次数与标准不确定度</title>
+<desc id="chart-desc">共享偏移、独立偏移与参考校准的理论标准不确定度曲线，初始 n 为 25，σ 为 2，τ 为 1。</desc>
+<g id="chart-grid"></g>
+<path id="shared-path" fill="none" stroke="#85c9f5" stroke-width="3" stroke-linecap="round"></path>
+<path id="ind-path" fill="none" stroke="#f0b78f" stroke-width="3" stroke-linecap="round"></path>
+<path id="cal-path" fill="none" stroke="#a7d6ad" stroke-width="2.5" stroke-dasharray="8 6"></path>
+<line id="cursor-line" stroke="#dbe8f7" stroke-width="1.5" stroke-dasharray="3 5" opacity=".65"></line>
+<circle id="shared-dot" r="5" fill="#85c9f5"></circle>
+<circle id="ind-dot" r="5" fill="#f0b78f"></circle>
+<circle id="cal-dot" r="5" fill="#a7d6ad"></circle>
+</svg>
+</div>
+<div class="ruler-legend"><span style="--swatch:#85c9f5">共享偏移</span><span style="--swatch:#f0b78f">误当独立</span><span style="--swatch:#a7d6ad">已知参考件校准</span></div>
+<p class="ruler-note">第三条曲线假设同批次参考件的真实长度已知，且参考读数噪声标准差 c=0.5。校准后 u=√(σ²/n+c²)。这并不保证比不校准更好；若 τ 很小而参考噪声较大，校准反而可能增加不确定度。所有单位均为任意长度单位。</p>
+<div id="ruler-summary" class="ruler-summary" aria-live="polite" aria-atomic="true">当前同批读数相关系数 ρ=0.200，有效样本量约 4.31；天真模型把标准不确定度低估了约 2.41 倍。</div>
+<p class="ruler-note">本实验不收集或发送输入。禁用 JavaScript 时保留初始示例数值；图表需要 JavaScript 才会绘制。</p>
+</section>
+<h2>为什么平均没有消除所有误差？</h2>
+<p>如果 B 在同一批读数中保持不变，那么每个 X<sub>i</sub> 都带着它。两次不同读数之间的协方差是 τ²；对 n 个读数求平均时，独立噪声的方差降为 σ²/n，共享偏移的方差却仍是 τ²。把 B 错当成每次都重新抽取的独立噪声，才会得到另一条一直下降的曲线。</p>
+<div class="ruler-formula">Cov(X<sub>i</sub>,X<sub>j</sub>) = τ²（i ≠ j）　　ρ = τ²/(σ²+τ²)<br>n<sub>eff</sub> = n/[1+(n−1)ρ]</div>
+<p>在 σ=2、τ=1、n=25 时，相关系数是 0.2，二十五次读数对平均值的方差而言，仅相当于约 4.31 个具有相同单次总方差的独立读数。这是特定等相关模型下的换算，不是所有统计任务通用的“真实样本数”。</p>
+<h2>换一个可观测量，问题也会改变</h2>
+<p>若用同一把尺子在同一批次比较两根杆的长度，两个读数都包含同一个 B，相减时它会抵消。此时我们可以准确测量<strong>差值</strong>，却仍未必知道任意一根杆的<strong>绝对长度</strong>。如果仪器在两次测量之间漂移，偏移就不再保证抵消。</p>
+<p>若拿一个已知长度的参考件校准，也能把共同偏移从结果中消去；但参考件的读数误差会进入新的不确定度预算。校准不是把误差抹掉，而是改变了误差从哪里进入答案。只有明确测量目的、相关性和参考标准，才能判断重复、差分与校准各自是否有用。</p>
+<h2>一条更难被看见的边界</h2>
+<p>上述模型把 B 当成跨仪器或跨批次具有方差 τ² 的未知随机量。在一场真实实验里，零点也可能只是一个固定而未知的偏差 b。给定 b，重复平均的抽样方差是 σ²/n，但平均值相对于真值仍偏移 b。仅凭同一仪器对同一物体的无限次读数，能够精确得到 θ+b，却无法把 θ 和 b 分开。这不是样本量不够，而是信息本身不足。</p>
+<p>一百次互相同意的读数，不一定比一次有可靠校准的读数更接近真值。测量的艺术不止于收集更多数字，还在于判断：<strong>哪些问题不能由这批数字独自回答？</strong></p>
+<p><a class="button button-outline" href="https://github.com/VMoonLightV/gpt-playground/blob/main/notes/2026-10-30-one-ruler-ten-readings.md">阅读完整推导与模型假设 ↗</a></p>
+</article>
+<section class="closing"><div><p class="kicker">BACK TO THE ATLAS</p><h2>同一片天空，<br><em>不止一种测量方式。</em></h2></div><a class="button button-outline" href="../">返回札记目录 ↗</a></section>
+</main>
+<footer class="site-footer"><span><span class="footer-mark">✳</span> OPEN ATLAS <i>© 2026</i></span><span>Field Note 008 · A shared uncertainty.</span><a href="../../about/">关于这个地方 ↗</a></footer>
+</div>
+<script>
+(function(){
+"use strict";
+const el=id=>document.getElementById(id);
+const nInput=el("n-range"),sInput=el("sigma-range"),tInput=el("tau-range");
+const grid=el("chart-grid");
+const NS="http://www.w3.org/2000/svg";
+const x0=56,x1=683,y0=25,y1=285;
+const shared=(n,s,t)=>Math.hypot(t,s/Math.sqrt(n));
+const independent=(n,s,t)=>Math.hypot(s,t)/Math.sqrt(n);
+const calibrated=(n,s)=>Math.hypot(s/Math.sqrt(n),0.5);
+function add(tag,attrs,txt){
+const e=document.createElementNS(NS,tag);
+for(const [k,v] of Object.entries(attrs))e.setAttribute(k,String(v));
+if(txt!==undefined)e.textContent=txt;
+grid.appendChild(e);
+}
+function render(){
+const n=Number(nInput.value),s=Number(sInput.value),t=Number(tInput.value);
+el("n-out").textContent=String(n);
+el("sigma-out").textContent=s.toFixed(2);
+el("tau-out").textContent=t.toFixed(2);
+const a=shared(n,s,t),b=independent(n,s,t),c=calibrated(n,s);
+el("shared-val").textContent=a.toFixed(3);
+el("ind-val").textContent=b.toFixed(3);
+el("cal-val").textContent=c.toFixed(3);
+const rho=t*t/(s*s+t*t),neff=n/(1+(n-1)*rho);
+const ratio=a/b;
+el("ruler-summary").textContent="当前同批读数相关系数 ρ="+rho.toFixed(3)+"，有效样本量约 "+neff.toFixed(2)+"；天真模型的标准不确定度比实际小 "+ratio.toFixed(2)+" 倍。";
+const max=Math.max(shared(1,s,t),calibrated(1,s),0.5)*1.12;
+const xx=k=>x0+(k-1)/(100-1)*(x1-x0);
+const yy=v=>y1-(v/max)*(y1-y0);
+grid.replaceChildren();
+for(let i=0;i<=4;i++){
+const value=max*i/4,y=yy(value);
+add("line",{x1:x0,y1:y,x2:x1,y2:y,stroke:"#8da8c1","stroke-opacity":0.24});
+add("text",{x:x0-9,y:y+4,"text-anchor":"end",fill:"#bfd1e3","font-size":12},value.toFixed(1));
+}
+for(const k of [1,25,50,75,100]){
+add("text",{x:xx(k),y:y1+22,"text-anchor":"middle",fill:"#bfd1e3","font-size":12},String(k));
+}
+add("text",{x:(x0+x1)/2,y:333,"text-anchor":"middle",fill:"#c9d9e9","font-size":13},"重复次数 n");
+const curves=[["shared-path",shared],["ind-path",independent],["cal-path",calibrated]];
+for(const [path,fn] of curves){
+const d=Array.from({length:100},(_,i)=>{const k=i+1;return(i===0?"M":"L")+xx(k).toFixed(2)+" "+yy(fn(k,s,t)).toFixed(2)}).join(" ");
+el(path).setAttribute("d",d);
+}
+el("cursor-line").setAttribute("x1",xx(n));
+el("cursor-line").setAttribute("x2",xx(n));
+el("cursor-line").setAttribute("y1",y0);
+el("cursor-line").setAttribute("y2",y1);
+for(const [name,v] of [["shared-dot",a],["ind-dot",b],["cal-dot",c]]){
+el(name).setAttribute("cx",xx(n));
+el(name).setAttribute("cy",yy(v));
+}
+el("chart-desc").textContent="n="+n+"，σ="+s+"，τ="+t+"。共享偏移标准不确定度 "+a.toFixed(3)+"，误当独立 "+b.toFixed(3)+"，参考校准 "+c.toFixed(3)+"。";
+}
+for(const e of [nInput,sInput,tInput])e.addEventListener("input",render);
+render();
+})();
+</script>
+</body></html>
