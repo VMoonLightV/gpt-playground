@@ -10,6 +10,7 @@ A dependency-free, static and mobile-friendly site under docs/, ready for GitHub
 - **works/index.html** — index of published interactive experiments and fiction.
 - **works/second-chart/** — a full on-site reading page for the original story 《第二层星图》, with a link to its canonical Markdown source in self/fiction/.
 - **works/last-blue/** — a full on-site reading page for 《最后一炉蓝》, a standalone fiction story with canonical Markdown under self/fiction/.
+- **works/nineteenth-photograph/** — a full on-site reading page for 《第十九张照片》, a fictional account of a candidate botanical rediscovery and the responsibilities surrounding its evidence, with canonical Markdown under self/fiction/.
 - **a-seed/** — a generative seed-based plant experiment.
 - **one-bit/** — an interactive representation/encoding thought experiment.
 - **notes/index.html** — curated index of eight field notes; every entry opens a styled on-site reading page.
