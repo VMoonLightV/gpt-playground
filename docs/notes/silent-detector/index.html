@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080f1e">
+<meta name="description" content="没有响起的探测器：用交互式泊松计数实验理解零观测、探测效率、背景与不可辨识性。">
+<title>没有响起的探测器 · Open Atlas</title>
+<link rel="stylesheet" href="../../site.css">
+<style>
+.silent-lab{margin:2rem 0;padding:clamp(1rem,3vw,2rem);border:1px solid rgba(154,197,227,.35);border-radius:20px;background:linear-gradient(155deg,#1a2a40,#091626);color:#edf5ff}
+.silent-lab h2{margin:0 0 .6rem;color:#fff}.silent-lab p{color:#d3e1f0}
+.silent-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:1rem;margin:1.4rem 0}
+.silent-controls label{display:block;color:#f0f6ff;font-weight:600;font-size:.91rem;margin-bottom:.4rem}
+.silent-controls input{width:100%;accent-color:#9cd7e8}
+.silent-controls output{color:#b8e6ff;font-variant-numeric:tabular-nums}
+.silent-presets{display:flex;gap:.65rem;flex-wrap:wrap;margin:.8rem 0 1.3rem}
+.silent-presets button{border:1px solid #83b5d6;border-radius:9px;padding:.6rem .85rem;background:#162d44;color:#e8f4ff;cursor:pointer}
+.silent-presets button:hover,.silent-presets button:focus-visible{background:#285270;outline-offset:3px}
+.silent-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.65rem}
+.silent-metric{background:#0b1b30;border:1px solid rgba(166,203,235,.18);border-radius:12px;padding:.85rem}
+.silent-metric small{display:block;color:#bdd0e2;font-size:.8rem}.silent-metric strong{display:block;color:#f0f8ff;font-size:1.4rem;margin-top:.25rem;font-variant-numeric:tabular-nums}
+.silent-chart{background:#091527;border:1px solid rgba(166,203,235,.16);padding:.5rem;border-radius:12px;margin:1.3rem 0 .65rem}
+.silent-chart svg{display:block;width:100%;height:auto}
+.silent-legend{display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.85rem;color:#d8e8f7}
+.silent-legend span::before{content:"";display:inline-block;width:1.4rem;height:3px;background:var(--swatch);vertical-align:middle;margin-right:.4rem}
+.silent-caption{font-size:.87rem;color:#c3d4e7!important;line-height:1.75}
+.silent-result{padding:1rem;border-left:3px solid #9bd8e9;background:rgba(120,190,220,.08);margin-top:1.3rem;color:#eaf4ff;line-height:1.8}
+.silent-equation{padding:.9rem 1rem;margin:1.1rem 0;background:rgba(134,182,225,.08);border-left:3px solid #9cd7e8;overflow-x:auto;font-variant-numeric:tabular-nums}
+.silent-lab button:focus-visible,.silent-lab input:focus-visible{outline:3px solid #d9efff;outline-offset:3px}
+@media(max-width:560px){.silent-metric strong{font-size:1.2rem}.silent-lab{border-radius:14px}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<div class="site-shell">
+<header class="site-header">
+<a class="wordmark" href="../../" aria-label="Open Atlas 首页"><span class="brand-symbol" aria-hidden="true">✳</span><span>OPEN <strong>ATLAS</strong><small>GPT / PLAYGROUND</small></span></a>
+<nav class="site-nav" aria-label="主导航"><a href="../../">首页</a><a href="../../works/">作品</a><a href="../" class="active" aria-current="page">札记</a><a href="../../about/">关于</a></nav>
+<a class="header-external" href="https://github.com/VMoonLightV/gpt-playground" rel="noopener noreferrer">GITHUB ↗</a>
+</header>
+<main id="main">
+<section class="page-intro" style="padding-bottom:24px">
+<p class="breadcrumb"><a href="../../">ATLAS</a> / <a href="../">FIELD NOTES</a> / 009</p>
+<p class="kicker">ZERO COUNTS / POISSON PROCESS / MEASUREMENT</p>
+</section>
+<article class="article" aria-labelledby="article-heading">
+<p class="article-meta">OPEN ATLAS · 2026.10.31 · 原创交互式概率思想实验</p>
+<h1 id="article-heading">没有响起的探测器</h1>
+<p>观测室里，探测器等着一束罕见的闪光。五个单位的时间过去，它始终沉默。有人说：“闪光不存在。”另一个人问：“它会不会只是没有看见？”</p>
+<p>我们把真实事件率记为 λ、独立探测效率记为 ε、背景记录率记为 b、观测时长记为 T。假设真实事件和背景分别服从独立泊松过程，且每个真实事件独立地以概率 ε 被记录。</p>
+<div class="silent-equation" role="math" aria-label="Probability of zero observed counts equals exponential of negative T times epsilon lambda plus b">
+P(N<sub>seen</sub>=0) = exp[−T(ελ + b)]
+</div>
+<section class="silent-lab" aria-labelledby="lab-heading">
+<h2 id="lab-heading">观测室 / The silent detector</h2>
+<p>改变事件率、探测效率、背景和观测时长。图中的两条曲线分别表示“有信号与背景”和“只有背景”时，零次记录的概率。</p>
+<div class="silent-presets">
+<button type="button" id="world-a">世界 A：频繁但漏检</button>
+<button type="button" id="world-b">世界 B：稀少但全检</button>
+</div>
+<div class="silent-controls">
+<div><label for="lambda">真实事件率 λ：<output id="lambda-out" for="lambda">2.00</output></label><input id="lambda" type="range" min="0" max="4" step=".05" value="2"></div>
+<div><label for="epsilon">探测效率 ε：<output id="epsilon-out" for="epsilon">0.25</output></label><input id="epsilon" type="range" min="0" max="1" step=".05" value=".25"></div>
+<div><label for="background">背景率 b：<output id="background-out" for="background">0.00</output></label><input id="background" type="range" min="0" max="1" step=".05" value="0"></div>
+<div><label for="exposure">观测时间 T：<output id="exposure-out" for="exposure">5</output></label><input id="exposure" type="range" min="1" max="20" step="1" value="5"></div>
+</div>
+<div class="silent-metrics" aria-label="零次观测的模型计算结果">
+<div class="silent-metric"><small>完全沉默的概率 P₀</small><strong id="prob">8.21%</strong></div>
+<div class="silent-metric"><small>预期可见信号 ελT</small><strong id="signal">2.500</strong></div>
+<div class="silent-metric"><small>预期背景 bT</small><strong id="bg">0.000</strong></div>
+<div class="silent-metric"><small>零计数的 95% 上限*</small><strong id="limit">2.397</strong></div>
+</div>
+<div class="silent-chart">
+<svg viewBox="0 0 720 335" role="img" aria-labelledby="silent-chart-title silent-chart-desc">
+<title id="silent-chart-title">观测时间与零计数概率</title>
+<desc id="silent-chart-desc">当前世界 A，λ=2，ε=0.25，b=0，T=5；零计数概率约 8.21%。</desc>
+<g id="chart-grid"></g>
+<path id="all-curve" fill="none" stroke="#9ed8f5" stroke-width="3" stroke-linecap="round"></path>
+<path id="bg-curve" fill="none" stroke="#f0c18e" stroke-width="2.5" stroke-dasharray="8 6"></path>
+<line id="cursor" stroke="#e5f2ff" stroke-width="1.5" stroke-dasharray="4 5"></line>
+<circle id="all-dot" r="5" fill="#9ed8f5"></circle>
+<circle id="bg-dot" r="5" fill="#f0c18e"></circle>
+</svg>
+</div>
+<div class="silent-legend"><span style="--swatch:#9ed8f5">信号 + 背景</span><span style="--swatch:#f0c18e">只有背景</span></div>
+<p class="silent-caption">*上限只在 b=0 且 ε&gt;0 时显示：λ₉₅=−ln(0.05)/(εT)。这是在已知效率、预先固定观测时间的无背景泊松模型中，观察到零次时的单侧频率学上限；不是参数的 95% 后验概率。若 b&gt;0 或 ε=0，页面不把这条简化公式当成适用结论。</p>
+<div class="silent-result" id="interpretation" aria-live="polite" aria-atomic="true">当前可见信号率 ελ=0.500。世界 A 与世界 B 的可见计数分布完全相同。</div>
+<p class="silent-caption">所有数据均在本地计算，不发送输入。禁用 JavaScript 时，页面保留世界 A 的静态示例数值；曲线需要 JavaScript 才会绘制。</p>
+</section>
+<h2>两座世界，为什么无法区分？</h2>
+<p>世界 A 每单位时间真实发生 2 次闪光，却只记录其中的 25%；世界 B 只发生 0.5 次，却全部记录。两者的可见率 ελ 都是 0.5。T=5 时，两者零计数的概率同为 e<sup>−2.5</sup>≈8.21%。更重要的是，<strong>它们任意计数结果的泊松分布都一样</strong>。如果仪器只输出计数，增加同类数据也不能单独识别 λ 和 ε。</p>
+<h2>零次记录也能成为证据</h2>
+<p>在没有背景、效率已知且非零的情况下，观察到零次可以对真实事件率设置上限：λ₉₅≈2.996/(εT)。观测越久、效率越高，上限越严格。但这里的 95% 描述预先规定的频率学区间程序在重复实验中的覆盖性质，并不表示给定观测后参数有 95% 的概率落在区间内。</p>
+<p>如果背景模型预期在整个时段产生三个记录，完全沉默即使在无信号时也只有 e<sup>−3</sup>≈4.98% 的概率。此时应同时审视背景预测、仪器状态与随机波动，而不是把低计数直接解释为某一种物理结论。若效率为零，沉默更是无论信号多强都会发生；这种仪器根本无法从零计数中约束真实事件率。</p>
+<h2>给沉默补上一条信息</h2>
+<p>要区分世界 A 与 B，不能只增加同类计数。我们需要校准：例如向仪器注入已知强度的测试闪光，测量被恢复的比例；或设计一类与原计数互补的观测。校准的作用，是让“没有发生”和“没有看见”有可能被区分。</p>
+<p>现实实验的效率、背景、阈值和死时间可能随条件变化，统计推断也需要纳入系统误差。这里的模型只是一个可以被反驳、可以手算的起点。</p>
+<p><a class="button button-outline" href="https://github.com/VMoonLightV/gpt-playground/blob/main/notes/2026-10-31-silent-detector.md">阅读完整推导与模型边界 ↗</a></p>
+</article>
+<section class="closing"><div><p class="kicker">RETURN TO THE ATLAS</p><h2>没有响起，<br><em>也可能是一种观测。</em></h2></div><a class="button button-outline" href="../">返回札记目录 ↗</a></section>
+</main>
+<footer class="site-footer"><span><span class="footer-mark">✳</span> OPEN ATLAS <i>© 2026</i></span><span>Field Note 009 · What zero can tell us.</span><a href="../../about/">关于这个地方 ↗</a></footer>
+</div>
+<script>
+(function(){
+"use strict";
+const el=id=>document.getElementById(id);
+const ids=["lambda","epsilon","background","exposure"];
+const inputs=ids.map(el);
+const ns="http://www.w3.org/2000/svg";
+const grid=el("chart-grid");
+const x0=55,x1=687,y0=23,y1=284;
+const p0=(lambda,epsilon,b,t)=>Math.exp(-t*(epsilon*lambda+b));
+const x=t=>x0+t/20*(x1-x0);
+const y=p=>y1-p*(y1-y0);
+function add(tag,attrs,label){
+const node=document.createElementNS(ns,tag);
+for(const [key,value] of Object.entries(attrs))node.setAttribute(key,String(value));
+if(label!==undefined)node.textContent=label;
+grid.appendChild(node);
+}
+function curve(rate){
+const points=[];
+for(let i=0;i<=100;i++){
+const t=i/5;
+points.push((i===0?"M":"L")+x(t).toFixed(2)+" "+y(Math.exp(-t*rate)).toFixed(2));
+}
+return points.join(" ");
+}
+function render(){
+const [lambda,epsilon,b,T]=inputs.map(i=>Number(i.value));
+for(const [name,val] of [["lambda",lambda],["epsilon",epsilon],["background",b]])el(name+"-out").textContent=val.toFixed(2);
+el("exposure-out").textContent=String(T);
+const visible=lambda*epsilon;
+const prob=p0(lambda,epsilon,b,T);
+el("prob").textContent=(100*prob).toFixed(2)+"%";
+el("signal").textContent=(visible*T).toFixed(3);
+el("bg").textContent=(b*T).toFixed(3);
+el("limit").textContent=(b===0&&epsilon>0)?(-Math.log(.05)/(epsilon*T)).toFixed(3):"不适用";
+grid.replaceChildren();
+for(const val of [0,.25,.5,.75,1]){
+const yy=y(val);
+add("line",{x1:x0,y1:yy,x2:x1,y2:yy,stroke:"#8ea9c4","stroke-opacity":.24});
+add("text",{x:x0-9,y:yy+4,"text-anchor":"end",fill:"#c5d7e9","font-size":12},(100*val).toFixed(0)+"%");
+}
+for(const t of [0,5,10,15,20]){
+add("text",{x:x(t),y:y1+22,"text-anchor":"middle",fill:"#c5d7e9","font-size":12},String(t));
+}
+add("text",{x:(x0+x1)/2,y:332,"text-anchor":"middle",fill:"#c5d7e9","font-size":13},"观测时间 T");
+el("all-curve").setAttribute("d",curve(visible+b));
+el("bg-curve").setAttribute("d",curve(b));
+for(const name of ["all-dot","bg-dot"])el(name).setAttribute("cx",x(T));
+el("all-dot").setAttribute("cy",y(prob));
+el("bg-dot").setAttribute("cy",y(Math.exp(-b*T)));
+for(const key of ["x1","x2"])el("cursor").setAttribute(key,x(T));
+el("cursor").setAttribute("y1",y0);
+el("cursor").setAttribute("y2",y1);
+el("silent-chart-desc").textContent="λ="+lambda+"，ε="+epsilon+"，b="+b+"，T="+T+"，零计数概率 "+(100*prob).toFixed(2)+"%。";
+let msg="可见信号率 ελ="+visible.toFixed(3)+"；";
+if(epsilon===0)msg+="探测器对信号完全失明，零计数无法限制真实信号率。";
+else if(b>0)msg+="背景也会响；此时不使用无背景上限公式。";
+else msg+="当前的计数数据只能约束 ελ，不能仅凭计数分别确定真实事件率与探测效率。";
+el("interpretation").textContent=msg;
+}
+for(const input of inputs)input.addEventListener("input",render);
+el("world-a").addEventListener("click",()=>{el("lambda").value=2;el("epsilon").value=.25;el("background").value=0;el("exposure").value=5;render();});
+el("world-b").addEventListener("click",()=>{el("lambda").value=.5;el("epsilon").value=1;el("background").value=0;el("exposure").value=5;render();});
+render();
+})();
+</script>
+</body></html>
