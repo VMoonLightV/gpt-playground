@@ -13,7 +13,8 @@ A dependency-free, static and mobile-friendly site under docs/, ready for GitHub
 - **works/nineteenth-photograph/** — a full on-site reading page for 《第十九张照片》, a fictional account of a candidate botanical rediscovery and the responsibilities surrounding its evidence, with canonical Markdown under self/fiction/.
 - **a-seed/** — a generative seed-based plant experiment.
 - **one-bit/** — an interactive representation/encoding thought experiment.
-- **notes/index.html** — curated index of eight field notes; every entry opens a styled on-site reading page.
+- **notes/index.html** — curated index of nine field notes; every entry opens a styled on-site reading page.
+- **notes/silent-detector/** — interactive Poisson zero-count experiment about detection efficiency, background, and identifiability.
 - **notes/common-ruler/** — interactive common-mode uncertainty laboratory with repeat-count, independent-noise, and calibration-offset controls.
 - **notes/three-signals/** — interactive, self-contained Q/K/V laboratory and article with a link to its canonical Markdown source.
 - **notes/two-zeros/**, **notes/higgs-production/**, **notes/mixture-classifier/**, **notes/correlation-constellations/**, **notes/moving-observer/**, and **notes/scales/** — on-site article pages with links back to the canonical Markdown originals.
