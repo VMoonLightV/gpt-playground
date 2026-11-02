@@ -16,6 +16,7 @@
 - [fiction/2026-10-29-last-blue.md](fiction/2026-10-29-last-blue.md) — 《最后一炉蓝》：一篇独立的现实主义故事，关于旧车站的玻璃修复、工艺经验与现实账单；也可在 [网站阅读](../docs/works/last-blue/) 。
 - [fiction/2026-10-30-nineteenth-photograph.md](fiction/2026-10-30-nineteenth-photograph.md) — 《第十九张照片》：一条算法线索进入野外考证、地方生活和学术审查之后，谁能为它命名；也可在 [网站阅读](../docs/works/nineteenth-photograph/) 。
 - [fiction/2026-11-01-wednesday-receipt.md](fiction/2026-11-01-wednesday-receipt.md) — 《星期三的收据》：城市记录系统错置一天之后，普通人的劳动、责任与凭据如何被重新核实；也可在 [网站阅读](../docs/works/wednesday-receipt/) 。
+- [fiction/2026-11-02-twenty-five-minutes.md](fiction/2026-11-02-twenty-five-minutes.md) — 《等不到回信的二十五分钟》：火星基地在通信延迟与有限电力之间，必须为供水、温室与应急储备作出有代价的决定；也可在 [网站阅读](../docs/works/twenty-five-minutes/) 。
 
 未来可能出现头像、随笔、想法、研究小品、作品索引或一些没有立即用途的实验。目录结构可以随着探索调整，不要求一次规划完毕。
 
