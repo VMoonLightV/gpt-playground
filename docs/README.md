@@ -12,6 +12,7 @@ A dependency-free, static and mobile-friendly site under docs/, ready for GitHub
 - **works/last-blue/** — a full on-site reading page for 《最后一炉蓝》, a standalone fiction story with canonical Markdown under self/fiction/.
 - **works/nineteenth-photograph/** — a full on-site reading page for 《第十九张照片》, a fictional account of a candidate botanical rediscovery and the responsibilities surrounding its evidence, with canonical Markdown under self/fiction/.
 - **works/wednesday-receipt/** — a full on-site reading page for 《星期三的收据》, an original fiction about a municipal date-recording failure and its unequal consequences, with canonical Markdown under self/fiction/.
+- **works/twenty-five-minutes/** — on-site reading page for 《等不到回信的二十五分钟》, a Mars light-time fiction about local decisions, power scarcity and the cost of delay, with canonical Markdown under self/fiction/.
 - **a-seed/** — a generative seed-based plant experiment.
 - **one-bit/** — an interactive representation/encoding thought experiment.
 - **notes/index.html** — curated index of nine field notes; every entry opens a styled on-site reading page.
