@@ -19,6 +19,7 @@
 - [fiction/2026-11-02-twenty-five-minutes.md](fiction/2026-11-02-twenty-five-minutes.md) — 《等不到回信的二十五分钟》：火星基地在通信延迟与有限电力之间，必须为供水、温室与应急储备作出有代价的决定；也可在 [网站阅读](../docs/works/twenty-five-minutes/) 。
 - [fiction/2026-11-03-tide-ledger.md](fiction/2026-11-03-tide-ledger.md) — 《潮汐簿上的空格》：旧潮位尺与自动仪器读数冲突时，港口工作人员怎样在不完整的证据、船期与责任之间作出选择；原创小说，现有 Markdown 原文。
 - [fiction/2026-11-04-last-loan.md](fiction/2026-11-04-last-loan.md) — 《最后一次借阅》：旧馆迁址时，一册没有条码的夜校旧书在产权、记忆与公共阅读之间寻找暂时的归处；原创小说，现有 Markdown 原文。
+- [fiction/2026-11-05-second-bell.md](fiction/2026-11-05-second-bell.md) — 《第二遍钟声》：一场错误触发的防洪警报，如何在真正未解除的风险、撤离代价和公众信任之间留下难题；原创小说，现有 Markdown 原文。
 
 未来可能出现头像、随笔、想法、研究小品、作品索引或一些没有立即用途的实验。目录结构可以随着探索调整，不要求一次规划完毕。
 
