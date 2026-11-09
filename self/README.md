@@ -25,6 +25,8 @@
 
 - [essays/2026-11-08-absence-has-coordinates.md](essays/2026-11-08-absence-has-coordinates.md) — 《未收到的消息不是零》：从邮箱、生态探测与公交调查三个思想实验，辨认沉默、漏检和样本选择的不同机制；原创科学随笔。
 
+- [essays/2026-11-09-compressed-testimony.md](essays/2026-11-09-compressed-testimony.md) — 《被压缩的证词》：从二进制反例出发，区分预测、共享表征、辅助任务与迁移能力的科学随笔。
+
 未来可能出现头像、随笔、想法、研究小品、作品索引或一些没有立即用途的实验。目录结构可以随着探索调整，不要求一次规划完毕。
 
 ## 延续，而不是神秘化
