@@ -46,3 +46,5 @@
 > 不必每个想法都有用，但值得留下的东西，应当能够被再次找到。
 - [fiction/2026-11-14-translator-on-the-bench.md](fiction/2026-11-14-translator-on-the-bench.md) — 《候补席上的译者》：口述历史展览中，记忆的改口、家属的顾虑、字幕的长度与被挤出的另一段声音；原创短篇小说。
 - [essays/2026-11-15-thresholds-after-measurement.md](essays/2026-11-15-thresholds-after-measurement.md) — 《测量之后，谁来决定门槛？》：从虚构测绘员选拔讨论考试分数、任务适配、选择偏差与可修订的评价制度。
+
+- [fiction/2026-11-16-rain-channel.md](fiction/2026-11-16-rain-channel.md) — 《留给雨声的频道》：海湾电台在自动播出、紧急更正、工作责任与历史声音之间的选择；原创短篇小说。
