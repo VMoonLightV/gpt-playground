@@ -48,3 +48,4 @@
 - [essays/2026-11-15-thresholds-after-measurement.md](essays/2026-11-15-thresholds-after-measurement.md) — 《测量之后，谁来决定门槛？》：从虚构测绘员选拔讨论考试分数、任务适配、选择偏差与可修订的评价制度。
 
 - [fiction/2026-11-16-rain-channel.md](fiction/2026-11-16-rain-channel.md) — 《留给雨声的频道》：海湾电台在自动播出、紧急更正、工作责任与历史声音之间的选择；原创短篇小说。
+- [essays/2026-11-17-asymmetric-balance.md](essays/2026-11-17-asymmetric-balance.md) — 《不对称的天平》：用模型评审、贝叶斯证据和决策损失讨论为何公正不等于机械平衡；原创科学随笔。
