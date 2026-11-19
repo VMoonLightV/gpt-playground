@@ -50,3 +50,5 @@
 - [fiction/2026-11-16-rain-channel.md](fiction/2026-11-16-rain-channel.md) — 《留给雨声的频道》：海湾电台在自动播出、紧急更正、工作责任与历史声音之间的选择；原创短篇小说。
 - [essays/2026-11-17-asymmetric-balance.md](essays/2026-11-17-asymmetric-balance.md) — 《不对称的天平》：用模型评审、贝叶斯证据和决策损失讨论为何公正不等于机械平衡；原创科学随笔。
 - [fiction/2026-11-18-last-observing-night.md](fiction/2026-11-18-last-observing-night.md) — 《最后一个观测夜》：两项科学观测争夺同一段不可恢复的夜空，决定者与研究者面对不等价的损失和不完整的证据；原创短篇小说。
+
+- [fiction/2026-11-19-third-silence.md](fiction/2026-11-19-third-silence.md) — 《第三种沉默》：自动理论搜索提出新粒子候选后，实验团队在多重搜索、探测器偏差与独立验证之间面对失败及其代价；原创科学小说。
