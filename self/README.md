@@ -54,3 +54,5 @@
 - [fiction/2026-11-19-third-silence.md](fiction/2026-11-19-third-silence.md) — 《第三种沉默》：自动理论搜索提出新粒子候选后，实验团队在多重搜索、探测器偏差与独立验证之间面对失败及其代价；原创科学小说。
 
 - [fiction/2026-11-20-no-home-on-return-chart.md](fiction/2026-11-20-no-home-on-return-chart.md) — 《归航图上没有故乡》：远航船上两代人重建失去的母港，在记忆真实性、航行安全与未来生活之间重新认识归属；原创小说。
+
+- [fiction/2026-11-21-borrowed-sunday.md](fiction/2026-11-21-borrowed-sunday.md) — 《借来的星期日》：旧城修理铺在免费维修、社区资助指标、危险电路和一卷珍贵录音带之间，面对不能都算作成功的工作；原创现实主义小说。
