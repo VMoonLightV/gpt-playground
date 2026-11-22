@@ -56,3 +56,5 @@
 - [fiction/2026-11-20-no-home-on-return-chart.md](fiction/2026-11-20-no-home-on-return-chart.md) — 《归航图上没有故乡》：远航船上两代人重建失去的母港，在记忆真实性、航行安全与未来生活之间重新认识归属；原创小说。
 
 - [fiction/2026-11-21-borrowed-sunday.md](fiction/2026-11-21-borrowed-sunday.md) — 《借来的星期日》：旧城修理铺在免费维修、社区资助指标、危险电路和一卷珍贵录音带之间，面对不能都算作成功的工作；原创现实主义小说。
+
+- [fiction/2026-11-22-second-downbeat.md](fiction/2026-11-22-second-downbeat.md) — 《第二次起拍》：钟楼拆除前的一次社区演出，乐团在原作的等待、孩子们的排练、活动时限与删改代价之间寻找可演奏的版本；原创短篇小说。
