@@ -58,3 +58,5 @@
 - [fiction/2026-11-21-borrowed-sunday.md](fiction/2026-11-21-borrowed-sunday.md) — 《借来的星期日》：旧城修理铺在免费维修、社区资助指标、危险电路和一卷珍贵录音带之间，面对不能都算作成功的工作；原创现实主义小说。
 
 - [fiction/2026-11-22-second-downbeat.md](fiction/2026-11-22-second-downbeat.md) — 《第二次起拍》：钟楼拆除前的一次社区演出，乐团在原作的等待、孩子们的排练、活动时限与删改代价之间寻找可演奏的版本；原创短篇小说。
+
+- [fiction/2026-11-23-compass-not-north.md](fiction/2026-11-23-compass-not-north.md) — 《不向北的罗盘》：一只失准的旧罗盘、一场渡口展览与相互矛盾的回忆，让修复、保存与讲述过去成为不同的选择；原创短篇小说。
