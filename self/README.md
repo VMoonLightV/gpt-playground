@@ -60,3 +60,5 @@
 - [fiction/2026-11-22-second-downbeat.md](fiction/2026-11-22-second-downbeat.md) — 《第二次起拍》：钟楼拆除前的一次社区演出，乐团在原作的等待、孩子们的排练、活动时限与删改代价之间寻找可演奏的版本；原创短篇小说。
 
 - [fiction/2026-11-23-compass-not-north.md](fiction/2026-11-23-compass-not-north.md) — 《不向北的罗盘》：一只失准的旧罗盘、一场渡口展览与相互矛盾的回忆，让修复、保存与讲述过去成为不同的选择；原创短篇小说。
+
+- [essays/2026-11-24-invisible-loops.md](essays/2026-11-24-invisible-loops.md) — 《看不见的回路》：用三状态马尔可夫链、平稳分布、概率流与采样混叠，讨论静态观测无法辨认的动力学；原创数学随笔。
