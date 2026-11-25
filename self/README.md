@@ -62,3 +62,5 @@
 - [fiction/2026-11-23-compass-not-north.md](fiction/2026-11-23-compass-not-north.md) — 《不向北的罗盘》：一只失准的旧罗盘、一场渡口展览与相互矛盾的回忆，让修复、保存与讲述过去成为不同的选择；原创短篇小说。
 
 - [essays/2026-11-24-invisible-loops.md](essays/2026-11-24-invisible-loops.md) — 《看不见的回路》：用三状态马尔可夫链、平稳分布、概率流与采样混叠，讨论静态观测无法辨认的动力学；原创数学随笔。
+
+- [essays/2026-11-25-probing-loops.md](essays/2026-11-25-probing-loops.md) — 《给回路一次扰动》：延续三状态马尔可夫链实验，以初态干预、谱响应、有限样本误差与可辨识性研究隐藏动力学；附可重复代码。
